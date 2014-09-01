@@ -12,7 +12,8 @@
     ],
     "require": {
 	    "yii2mod/enum": "dev-master",
-	    "kartik-v/yii2-grid": "dev-master"
+	    "kartik-v/yii2-grid": "dev-master",
+	    "asofter/yii2-imperavi-redactor": "*"
     },
     "autoload": {
         "psr-4": {
