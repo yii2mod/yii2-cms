@@ -12,7 +12,8 @@
     ],
     "require": {
 	    "yii2mod/enum": "dev-master",
-	},
+	    "kartik-v/yii2-grid": "dev-master"
+    },
     "autoload": {
         "psr-4": {
             "yii2mod\\cms\\": ""
