@@ -10,6 +10,9 @@
             "email": "disemx@gmail.com"
         }
     ],
+    "require": {
+		"yii2mod/enum": "dev-master",
+	},
     "autoload": {
         "psr-4": {
             "yii2mod\\cms\\": ""
