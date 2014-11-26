@@ -8,6 +8,7 @@ The preferred way to install this extension is through composer.
 Either run
 
 php composer.phar require --prefer-dist yii2mod/yii2-cms "*"
+
 or add
 
 "yii2mod/yii2-cms": "*"
