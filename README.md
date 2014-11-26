@@ -1,3 +1,4 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yii2mod/cms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/cms/?branch=master)
 Installation
 ======================================
 ```php
