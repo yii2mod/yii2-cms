@@ -56,7 +56,8 @@ class CmsController extends Controller
         $model = new CmsModel();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['update', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', 'Page has been created.');
+            return $this->redirect(['index']);
         }
 
         return $this->render('@vendor/yii2mod/yii2-cms/views/cms/create', [
@@ -77,7 +78,8 @@ class CmsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['update', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', 'Page has been updated.');
+            return $this->redirect(['index']);
         }
         return $this->render('@vendor/yii2mod/yii2-cms/views/cms/update', [
             'model' => $model,
@@ -95,7 +97,7 @@ class CmsController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        Yii::$app->session->setFlash('success', 'Page has been deleted.');
         return $this->redirect(['index']);
     }
 
