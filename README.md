@@ -1,5 +1,5 @@
 CMS Extension
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yii2mod/cms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/cms/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/yii2mod/cms/badges/build.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/cms/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yii2mod/cms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/badges/build.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/cms/build-status/master)
 
 Installation
 ------------
