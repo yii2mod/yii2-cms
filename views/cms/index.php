@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]), ['create'], ['class' => 'btn btn-success']);
         ?>
     </p>
-
+    <?php \yii\widgets\Pjax::begin(['enablePushState' => false,'timeout' => 3000]); ?>
     <?php echo \kartik\grid\GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
@@ -28,8 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'url',
                 'format' => 'html',
                 'value' => function ($model) {
-                        return Html::a($model->url, Url::to($model->url, true));
-                    }
+                    return Html::a($model->url, Url::to($model->url, true));
+                }
             ],
             'title',
             [
@@ -40,8 +40,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'updatedAt',
                 'value' => function ($model) {
-                        return date("d-M-Y", $model->updatedAt);
-                    },
+                    return date("d-M-Y", $model->updatedAt);
+                },
             ],
             [
                 'header' => 'Actions',
@@ -51,5 +51,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]);
     ?>
-
+    <?php \yii\widgets\Pjax::end(); ?>
 </div>
