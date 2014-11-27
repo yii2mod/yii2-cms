@@ -13,6 +13,8 @@
     "require": {
 	    "yii2mod/yii2-enum": "dev-master",
 	    "kartik-v/yii2-grid": "dev-master",
+	    "kartik-v/yii2-detail-view": "*",
+            "kartik-v/yii2-mpdf": "dev-master",
 	    "asofter/yii2-imperavi-redactor": "*"
     },
     "autoload": {
