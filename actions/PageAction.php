@@ -25,7 +25,7 @@ class PageAction extends Action
      * Page path
      * @var string
      */
-    protected $view = '@vendor/yii2mod/cms/views/page';
+    protected $view = '@vendor/yii2mod/yii2-cms/views/page';
 
     /**
      * @author Kravchuk Dmitry
