@@ -18,8 +18,8 @@ use yii\helpers\Inflector;
  * @property string  $metaTitle
  * @property string  $metaDescription
  * @property string  $metaKeywords
- * @property integer $dateCreated
- * @property integer $dateUpdated
+ * @property integer $createdAt
+ * @property integer $updatedAt
  */
 class CmsModel extends ActiveRecord
 {
@@ -42,7 +42,7 @@ class CmsModel extends ActiveRecord
             [['url'], 'filter', 'filter' => [$this, 'filterUrl']],
             [['content', 'metaTitle', 'metaDescription', 'metaKeywords'], 'string'],
             [['url'], 'unique'],
-            [['status', 'dateCreated', 'dateUpdated'], 'integer'],
+            [['status', 'createdAt', 'updatedAt'], 'integer'],
             [['url', 'title'], 'string', 'max' => 255]
         ];
     }
@@ -71,8 +71,8 @@ class CmsModel extends ActiveRecord
             'metaTitle' => Yii::t('app', 'Meta Title'),
             'metaDescription' => Yii::t('app', 'Meta Description'),
             'metaKeywords' => Yii::t('app', 'Meta Keywords'),
-            'dateCreated' => Yii::t('app', 'Date Created'),
-            'dateUpdated' => Yii::t('app', 'Date Updated'),
+            'createdAt' => Yii::t('app', 'Date Created'),
+            'updatedAt' => Yii::t('app', 'Date Updated'),
         ];
     }
 
@@ -84,8 +84,8 @@ class CmsModel extends ActiveRecord
         $behaviors['CTimestampBehavior'] = [
             'class' => 'yii\behaviors\TimestampBehavior',
             'attributes' => [
-                ActiveRecord::EVENT_BEFORE_INSERT => ['dateCreated'],
-                ActiveRecord::EVENT_BEFORE_UPDATE => ['dateUpdated'],
+                ActiveRecord::EVENT_BEFORE_INSERT => ['createdAt'],
+                ActiveRecord::EVENT_BEFORE_UPDATE => ['updatedAt'],
             ]
         ];
         return $behaviors;

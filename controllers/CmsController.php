@@ -41,7 +41,7 @@ class CmsController extends Controller
             'query' => CmsModel::find(),
         ]);
 
-        return $this->render('@vendor/yii2mod/cms/views/cms/index', [
+        return $this->render('@vendor/yii2mod/yii2-cms/views/cms/index', [
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -59,7 +59,7 @@ class CmsController extends Controller
             return $this->redirect(['update', 'id' => $model->id]);
         }
 
-        return $this->render('@vendor/yii2mod/cms/views/cms/create', [
+        return $this->render('@vendor/yii2mod/yii2-cms/views/cms/create', [
             'model' => $model,
         ]);
     }
@@ -79,7 +79,7 @@ class CmsController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['update', 'id' => $model->id]);
         }
-        return $this->render('@vendor/yii2mod/cms/views/cms/update', [
+        return $this->render('@vendor/yii2mod/yii2-cms/views/cms/update', [
             'model' => $model,
         ]);
     }

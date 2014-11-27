@@ -14,27 +14,26 @@ use \yii2mod\cms\models\enumerables\CmsStatus;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => 255]) ?>
+    <?php echo $form->field($model, 'title')->textInput(['maxlength' => 255]) ?>
 
-    <?=
-    $form->field($model, 'content')->widget(Widget::className(), [
+    <?php echo $form->field($model, 'content')->widget(Widget::className(), [
         'options' => [
             'minHeight' => 200,
         ]
     ])
     ?>
-    <?= $form->field($model, 'url')->textInput(['maxlength' => 255]) ?>
+    <?php echo $form->field($model, 'url')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'metaTitle')->textInput(['maxlength' => 255]) ?>
+    <?php echo $form->field($model, 'metaTitle')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'metaDescription')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'metaDescription')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'metaKeywords')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'metaKeywords')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'status')->dropDownList(CmsStatus::$list) ?>
+    <?php echo $form->field($model, 'status')->dropDownList(CmsStatus::$list) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

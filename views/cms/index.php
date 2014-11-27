@@ -11,25 +11,23 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cms-model-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?php echo Html::encode($this->title) ?></h1>
 
     <p>
-        <?=
-        Html::a(Yii::t('app', 'Create Page', [
+        <?php echo Html::a(Yii::t('app', 'Create Page', [
             'modelClass' => 'Cms Model',
-        ]), ['create'], ['class' => 'btn btn-success'])
+        ]), ['create'], ['class' => 'btn btn-success']);
         ?>
     </p>
 
-    <?=
-    \kartik\grid\GridView::widget([
+    <?php echo \kartik\grid\GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             'id',
             [
                 'attribute' => 'url',
                 'format' => 'html',
-                'value' => function ($model, $index, $wiredget) {
+                'value' => function ($model) {
                         return Html::a($model->url, Url::to($model->url, true));
                     }
             ],
@@ -40,9 +38,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'vAlign' => 'middle',
             ],
             [
-                'attribute' => 'dateUpdated',
-                'value' => function ($model, $index, $widget) {
-                        return date("d-M-Y", $model->dateUpdated);
+                'attribute' => 'updatedAt',
+                'value' => function ($model) {
+                        return date("d-M-Y", $model->updatedAt);
                     },
             ],
             [
