@@ -8,14 +8,19 @@
         {
             "name": "Dmitry Semenov",
             "email": "disemx@gmail.com"
+        },
+        {
+            "name": "Igor Chepurnoy",
+            "email": "igorzfort@gmail.com"
         }
     ],
     "require": {
 	    "yii2mod/yii2-enum": "dev-master",
 	    "kartik-v/yii2-grid": "dev-master",
 	    "kartik-v/yii2-detail-view": "*",
-            "kartik-v/yii2-mpdf": "dev-master",
-	    "asofter/yii2-imperavi-redactor": "*"
+        "kartik-v/yii2-mpdf": "dev-master",
+	    "asofter/yii2-imperavi-redactor": "*",
+        "yii2mod/yii2-editable": "*"
     },
     "autoload": {
         "psr-4": {

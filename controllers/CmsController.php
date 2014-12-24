@@ -8,6 +8,8 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii2mod\cms\models\search\CmsModelSearch;
+use yii2mod\editable\EditableAction;
 
 /**
  * CmsController implements the CRUD actions for CmsModel model.
@@ -17,6 +19,9 @@ class CmsController extends Controller
 {
 
     /**
+     * Returns a list of behaviors that this component should behave as.
+     *
+     * Child classes may override this method to specify the behaviors they want to behave as.
      * @return array
      */
     public function behaviors()
@@ -27,7 +32,24 @@ class CmsController extends Controller
                 'actions' => [
                     'delete' => ['post'],
                 ],
-            ],
+            ]
+        ];
+    }
+
+
+    /**
+     * Declares external actions for the controller.
+     * This method is meant to be overwritten to declare external actions for the controller.
+     * @return array
+     */
+    public function actions()
+    {
+        return [
+            'edit-page' => [
+                'class' => EditableAction::className(),
+                'modelClass' => CmsModel::className(),
+                'forceCreate' => false
+            ]
         ];
     }
 
@@ -37,12 +59,12 @@ class CmsController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => CmsModel::find(),
-        ]);
+        $searchModel = new CmsModelSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('@vendor/yii2mod/yii2-cms/views/cms/index', [
             'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel
         ]);
     }
 

@@ -1,7 +1,10 @@
 <?php
 
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\Pjax;
+use yii2mod\editable\EditableColumn;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -19,9 +22,10 @@ $this->params['breadcrumbs'][] = $this->title;
         ]), ['create'], ['class' => 'btn btn-success']);
         ?>
     </p>
-    <?php \yii\widgets\Pjax::begin(['enablePushState' => false,'timeout' => 3000]); ?>
-    <?php echo \kartik\grid\GridView::widget([
+    <?php Pjax::begin(['enablePushState' => false, 'timeout' => 5000]); ?>
+    <?php echo GridView::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
             'id',
             [
@@ -31,25 +35,32 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a($model->url, Url::to($model->url, true));
                 }
             ],
-            'title',
+            [
+                'class' => EditableColumn::className(),
+                'attribute' => 'title',
+                'url' => ['edit-page'],
+            ],
             [
                 'class' => 'kartik\grid\BooleanColumn',
                 'attribute' => 'status',
                 'vAlign' => 'middle',
+                'width' => '150px',
+                'filterInputOptions' => ['prompt' => 'Select Status', 'class' => 'form-control'],
             ],
             [
-                'attribute' => 'updatedAt',
+                'attribute' => 'createdAt',
                 'value' => function ($model) {
-                    return date("d-M-Y", $model->updatedAt);
+                    return date("d-M-Y", $model->createdAt);
                 },
+                'filter' => false,
             ],
             [
                 'header' => 'Actions',
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update}{delete}',
-            ],
+            ]
         ],
     ]);
     ?>
-    <?php \yii\widgets\Pjax::end(); ?>
+    <?php Pjax::end(); ?>
 </div>

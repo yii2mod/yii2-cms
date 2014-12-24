@@ -8,8 +8,6 @@ use yii\helpers\Inflector;
 
 /**
  * This is the model class for table "Cms".
- * @author  Kravchuk Dmitry
- * @package yii2mod\cms\models
  * @property integer $id
  * @property string  $url
  * @property string  $title
@@ -25,7 +23,13 @@ class CmsModel extends ActiveRecord
 {
 
     /**
-     * @inheritdoc
+     * Declares the name of the database table associated with this AR class.
+     * By default this method returns the class name as the table name by calling [[Inflector::camel2id()]]
+     * with prefix [[Connection::tablePrefix]]. For example if [[Connection::tablePrefix]] is 'tbl_',
+     * 'Customer' becomes 'tbl_customer', and 'OrderItem' becomes 'tbl_order_item'. You may override this method
+     * if the table is not named after this convention.
+     *
+     * @return string the table name
      */
     public static function tableName()
     {
@@ -33,7 +37,12 @@ class CmsModel extends ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * Returns the validation rules for attributes.
+     *
+     * Validation rules are used by [[validate()]] to check if attribute values are valid.
+     * Child classes may override this method to declare different validation rules.
+     * @return array validation rules
+     * @see scenarios()
      */
     public function rules()
     {
@@ -58,7 +67,13 @@ class CmsModel extends ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * Returns the attribute labels.
+     *
+     * Attribute labels are mainly used for display purpose. For example, given an attribute
+     * `firstName`, we can declare a label `First Name` which is more user-friendly and can
+     * be displayed to end users.
+     *
+     * @return array attribute labels (name => label)
      */
     public function attributeLabels()
     {
@@ -77,6 +92,10 @@ class CmsModel extends ActiveRecord
     }
 
     /**
+     * Returns a list of behaviors that this component should behave as.
+     *
+     * Child classes may override this method to specify the behaviors they want to behave as.
+     *
      * @return mixed
      */
     public function behaviors()
