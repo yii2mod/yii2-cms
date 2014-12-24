@@ -4,7 +4,6 @@ namespace yii2mod\cms\controllers;
 
 use Yii;
 use yii2mod\cms\models\CmsModel;
-use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
