@@ -2,7 +2,6 @@
 
 namespace yii2mod\cms\models\search;
 
-use Yii;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 use yii2mod\cms\models\CmsModel;
