@@ -30,9 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             [
                 'attribute' => 'url',
-                'format' => 'html',
+                'format' => 'raw',
                 'value' => function ($model) {
-                    return Html::a($model->url, Url::to($model->url, true));
+                    return Html::a($model->url, Url::to($model->url, true), ['target' => '_blank', 'data-pjax' => 0]);
                 }
             ],
             [

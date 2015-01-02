@@ -4,7 +4,7 @@ namespace yii2mod\cms\models;
 
 use Yii;
 use yii\db\ActiveRecord;
-use yii\helpers\Inflector;
+use yii2mod\cms\models\enumerables\CmsStatus;
 
 /**
  * This is the model class for table "Cms".
@@ -63,7 +63,7 @@ class CmsModel extends ActiveRecord
      */
     public function filterUrl()
     {
-        return Inflector::slug($this->url);
+        return preg_replace('/[=\s—–-]+/u', '-', $this->url);
     }
 
     /**
@@ -108,6 +108,18 @@ class CmsModel extends ActiveRecord
             ]
         ];
         return $behaviors;
+    }
+
+    /**
+     * Find page
+     * @param $url
+     * @return array|null|ActiveRecord
+     */
+    public function findPage($url)
+    {
+        return self::find()
+            ->where(['url' => $url, 'status' => CmsStatus::ENABLED])
+            ->one();
     }
 }
 

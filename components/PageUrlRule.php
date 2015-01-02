@@ -31,10 +31,10 @@ class PageUrlRule extends UrlRule
     public $route = 'site/page';
 
     /**
-     * @author Kravchuk Dmitry
+     * Parse request
      *
      * @param \yii\web\UrlManager $manager
-     * @param \yii\web\Request    $request
+     * @param \yii\web\Request $request
      *
      * @return boolean
      */
@@ -42,14 +42,12 @@ class PageUrlRule extends UrlRule
     {
         $pathInfo = $request->getPathInfo();
         // get path without '/' in end
-        $alias = preg_replace("#/$#", "", $pathInfo);
-        // find url alias in db
-        $page = CmsModel::find()
-            ->where(['url' => $alias, 'status' => CmsStatus::ENABLED])
-            ->one();
+        $url = preg_replace("#/$#", "", $pathInfo);
+        // find page by url in db
+        $page = (new CmsModel())->findPage($url);
         // redirect to page
         if (!is_null($page)) {
-            $params['pageAlias'] = $alias;
+            $params['pageAlias'] = $url;
             $params['pageId'] = $page->id;
             return [$this->route, $params];
         }
