@@ -1,7 +1,7 @@
 <?php
 
+use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 use yii\imperavi\Widget;
 use \yii2mod\cms\models\enumerables\CmsStatus;
 
@@ -22,7 +22,10 @@ use \yii2mod\cms\models\enumerables\CmsStatus;
         ]
     ])
     ?>
-    <?php echo $form->field($model, 'url')->textInput(['maxlength' => 255])->hint('This one accepts only letters, numbers, dash and slash, i.e. "docs/installation".'); ?>
+
+    <?php echo $form->field($model, 'url', [
+        'inputTemplate' => '<div class="input-group"><span class="input-group-addon">' . Yii::$app->urlManager->hostInfo . '/' . '</span>{input}</div>',
+    ])->textInput(['maxlength' => 255])->hint('This one accepts only letters, numbers, dash and slash, i.e. "docs/installation".'); ?>
 
     <?php echo $form->field($model, 'metaTitle')->textInput(['maxlength' => 255]) ?>
 
