@@ -8,8 +8,6 @@ use yii2mod\cms\models\enumerables\CmsStatus;
 
 /**
  * Class PageUrlRule
- * @author  Kravchuk Dmitry
- * @author  Dmitry Semenov <disemx@gmail.com>
  * @package yii2mod\cms\components
  */
 class PageUrlRule extends UrlRule
