@@ -48,22 +48,12 @@ class CmsModel extends ActiveRecord
     {
         return [
             [['url', 'title', 'content', 'metaTitle'], 'required'],
-            [['url'], 'filter', 'filter' => [$this, 'filterUrl']],
+            [['url'], 'match', 'pattern' => '/^[a-z0-9\/-]+$/'],
             [['content', 'metaTitle', 'metaDescription', 'metaKeywords'], 'string'],
             [['url'], 'unique'],
             [['status', 'createdAt', 'updatedAt'], 'integer'],
             [['url', 'title'], 'string', 'max' => 255]
         ];
-    }
-
-    /**
-     * Modify url
-     * @author Kravchuk Dmitry
-     * @return string
-     */
-    public function filterUrl()
-    {
-        return preg_replace('/[=\s—–-]+/u', '-', $this->url);
     }
 
     /**

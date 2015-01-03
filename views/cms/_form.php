@@ -22,7 +22,7 @@ use \yii2mod\cms\models\enumerables\CmsStatus;
         ]
     ])
     ?>
-    <?php echo $form->field($model, 'url')->textInput(['maxlength' => 255]) ?>
+    <?php echo $form->field($model, 'url')->textInput(['maxlength' => 255])->hint('This one accepts only letters, numbers, dash and slash, i.e. "docs/installation".'); ?>
 
     <?php echo $form->field($model, 'metaTitle')->textInput(['maxlength' => 255]) ?>
 
