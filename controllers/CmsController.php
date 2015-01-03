@@ -9,10 +9,10 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii2mod\cms\models\search\CmsModelSearch;
 use yii2mod\editable\EditableAction;
+use yii2mod\toggle\actions\ToggleAction;
 
 /**
  * CmsController implements the CRUD actions for CmsModel model.
- * @author Kravchuk Dmitry
  */
 class CmsController extends Controller
 {
@@ -48,6 +48,10 @@ class CmsController extends Controller
                 'class' => EditableAction::className(),
                 'modelClass' => CmsModel::className(),
                 'forceCreate' => false
+            ],
+            'toggle' => [
+                'class' => ToggleAction::className(),
+                'modelClass' => CmsModel::className(),
             ]
         ];
     }

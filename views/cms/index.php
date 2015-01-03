@@ -4,6 +4,7 @@ use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
+use yii2mod\cms\models\enumerables\CmsStatus;
 use yii2mod\editable\EditableColumn;
 
 /* @var $this yii\web\View */
@@ -29,11 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             'id',
             [
+                'class' => EditableColumn::className(),
                 'attribute' => 'url',
-                'format' => 'raw',
-                'value' => function ($model) {
-                    return Html::a($model->url, Url::to($model->url, true), ['target' => '_blank', 'data-pjax' => 0]);
-                }
+                'url' => ['edit-page'],
             ],
             [
                 'class' => EditableColumn::className(),
@@ -41,10 +40,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'url' => ['edit-page'],
             ],
             [
-                'class' => 'kartik\grid\BooleanColumn',
+                'class' => '\yii2mod\toggle\ToggleColumn',
                 'attribute' => 'status',
-                'vAlign' => 'middle',
-                'width' => '150px',
+                'filter' => CmsStatus::listData(),
                 'filterInputOptions' => ['prompt' => 'Select Status', 'class' => 'form-control'],
             ],
             [
@@ -57,7 +55,13 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'header' => 'Actions',
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{update}{delete}',
+                'template' => '{view}{update}{delete}',
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', Url::to($model->url, true),
+                            ['title' => 'View', 'data-pjax' => 0, 'target' => '_blank']);
+                    }
+                ],
             ]
         ],
     ]);
