@@ -2,27 +2,19 @@
 
 namespace yii2mod\cms\components;
 
-use yii\web\UrlRule;
+use yii\base\Object;
+use yii\web\UrlRuleInterface;
 use yii2mod\cms\models\CmsModel;
 use yii2mod\cms\models\enumerables\CmsStatus;
 
 /**
  * Class PageUrlRule
+ * Allows dynamic page path.
+ * @author Dmitry Semenov <disemx@gmail.com>
  * @package yii2mod\cms\components
  */
-class PageUrlRule extends UrlRule
+class PageUrlRule extends Object implements UrlRuleInterface
 {
-
-    /**
-     * @var string
-     */
-    public $pattern = '<\w+>';
-
-    /**
-     * @var string
-     */
-    public $connectionID = 'db';
-
     /**
      * @var string
      */
@@ -34,7 +26,7 @@ class PageUrlRule extends UrlRule
      * @param \yii\web\UrlManager $manager
      * @param \yii\web\Request $request
      *
-     * @return boolean
+     * @return mixed
      */
     public function parseRequest($manager, $request)
     {
@@ -49,7 +41,27 @@ class PageUrlRule extends UrlRule
             $params['pageId'] = $page->id;
             return [$this->route, $params];
         }
-        return parent::parseRequest($manager, $request);
+        return false;
     }
-
+    
+    /**
+     * @param \yii\web\UrlManager $manager
+     * @param string              $route
+     * @param array               $params
+     *
+     * @return bool|string
+     */
+    public function createUrl($manager, $route, $params)
+    {
+        if ($route != $this->route || !array_key_exists('pageAlias', $params)) {
+            return false;
+        }
+        $url = $params['pageAlias'];
+        $page = (new CmsModel())->findPage($url);
+        if (!$page) {
+            return false;
+        } else {
+            return "/{$url}/";
+        }
+    }
 }
