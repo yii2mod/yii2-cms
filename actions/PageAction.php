@@ -38,6 +38,9 @@ class PageAction extends Action
         if (!is_null($pageId)) {
             $model = CmsModel::findOne($pageId);
             if ($model) {
+                if (!empty($this->layout)) {
+                    $this->controller->layout = $this->layout;
+                }
                 return $this->controller->render($this->view, [
                     'model' => $model,
                 ]);
