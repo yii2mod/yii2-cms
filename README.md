@@ -26,6 +26,12 @@ to the require section of your composer.json.
 
 Usage
 ======================================
+If you use this extension separate from the [base template](https://github.com/yii2mod/base), then you need execute cms init migration by the following command: 
+```
+php yii migrate/up --migrationPath=@yii2mod/cms/migrations
+```
+
+Then you need add to main config following params:
 ```php
 'modules' => [
         'admin' => [
