@@ -4,7 +4,6 @@ namespace yii2mod\cms\components;
 
 use yii\web\UrlRule;
 use yii2mod\cms\models\CmsModel;
-use yii2mod\cms\models\enumerables\CmsStatus;
 
 /**
  * @author  Kravchuk Dmitry
