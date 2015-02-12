@@ -31,7 +31,7 @@ If you use this extension separate from the [base template](https://github.com/y
 php yii migrate/up --migrationPath=@yii2mod/cms/migrations
 ```
 
-To use this extension, you have to configure the main config in your application configuration:
+To use this extension, you have to configure the main config in your application:
 ```php
 'modules' => [
         'admin' => [
