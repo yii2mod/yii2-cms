@@ -31,7 +31,7 @@ If you use this extension separate from the [base template](https://github.com/y
 php yii migrate/up --migrationPath=@yii2mod/cms/migrations
 ```
 
-Then you need add to main config following params:
+To use this extension, you have to configure the main config in your application configuration:
 ```php
 'modules' => [
         'admin' => [
@@ -51,7 +51,7 @@ Then you need add to main config following params:
         ],
     ],
 ```
-SiteController (or configure via `$route` param in urlManager)
+Add to SiteController (or configure via `$route` param in urlManager):
 ```php
     /**
      * @return array
