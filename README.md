@@ -26,6 +26,12 @@ to the require section of your composer.json.
 
 Usage
 ======================================
+If you use this extension separate from the [base template](https://github.com/yii2mod/base), then you need execute cms init migration by the following command: 
+```
+php yii migrate/up --migrationPath=@yii2mod/cms/migrations
+```
+
+To use this extension, you have to configure the main config in your application:
 ```php
 'modules' => [
         'admin' => [
@@ -45,7 +51,7 @@ Usage
         ],
     ],
 ```
-SiteController (or configure via `$route` param in urlManager)
+Add to SiteController (or configure via `$route` param in urlManager):
 ```php
     /**
      * @return array
