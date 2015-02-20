@@ -81,7 +81,7 @@ class CmsModel extends ActiveRecord
         ];
     }
 
-    /**
+   /**
      * Returns a list of behaviors that this component should behave as.
      *
      * Child classes may override this method to specify the behaviors they want to behave as.
@@ -90,14 +90,15 @@ class CmsModel extends ActiveRecord
      */
     public function behaviors()
     {
-        $behaviors['CTimestampBehavior'] = [
-            'class' => 'yii\behaviors\TimestampBehavior',
-            'attributes' => [
-                ActiveRecord::EVENT_BEFORE_INSERT => ['createdAt'],
-                ActiveRecord::EVENT_BEFORE_UPDATE => ['updatedAt'],
+        return [
+            'timestamp' => [
+                'class' => 'yii\behaviors\TimestampBehavior',
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['createdAt', 'updatedAt'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updatedAt'],
+                ],
             ]
         ];
-        return $behaviors;
     }
 
     /**
