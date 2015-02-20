@@ -15,12 +15,7 @@ class CmsModelSearch extends CmsModel
 
     /**
      * Returns the validation rules for attributes.
-     *
-     * Validation rules are used by [[validate()]] to check if attribute values are valid.
-     * Child classes may override this method to declare different validation rules.
      * @return array validation rules
-     * @see scenarios()
-     *
      */
     public function rules()
     {
@@ -32,6 +27,8 @@ class CmsModelSearch extends CmsModel
 
     /**
      * Setup search function for filtering and sorting
+     * @param $params
+     * @return ActiveDataProvider
      */
     public function search($params)
     {
