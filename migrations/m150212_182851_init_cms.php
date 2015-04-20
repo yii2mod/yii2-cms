@@ -18,6 +18,7 @@ class m150212_182851_init_cms extends Migration
             'url' => Schema::TYPE_STRING . '(255)',
             'title' => Schema::TYPE_STRING . '(255)',
             'content' => Schema::TYPE_TEXT,
+            'default_content' => Schema::TYPE_TEXT,
             'status' => Schema::TYPE_SMALLINT,
             'metaTitle' => Schema::TYPE_TEXT,
             'metaDescription' => Schema::TYPE_TEXT,
