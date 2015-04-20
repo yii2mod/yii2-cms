@@ -39,6 +39,9 @@ use \yii2mod\cms\models\enumerables\CmsStatus;
     <div class="form-group">
         <?php echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']); ?>
         <?php echo Html::a(Yii::t('app', 'Cancel'), ['index'], ['class' => 'btn btn-default']); ?>
+        <?php if (!$model->isNewRecord) : ?>
+            <?php echo Html::a('Revert Content To Default', ['revert', 'id' => $model->id], ['class' => 'btn btn-primary']); ?>
+        <?php endif; ?>
     </div>
 
     <?php ActiveForm::end(); ?>

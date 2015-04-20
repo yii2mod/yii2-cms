@@ -13,7 +13,7 @@
     $this->registerMetaTag(['name' => 'description', 'content' => $model->metaDescription]);
     ?>
     <h1><?php echo $model->title; ?></h1>
-    <?php echo $model->content; ?>
+    <?php echo $model->getContent(); ?>
 </div>
 
 

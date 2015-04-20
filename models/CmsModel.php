@@ -12,6 +12,7 @@ use yii2mod\cms\models\enumerables\CmsStatus;
  * @property string  $url
  * @property string  $title
  * @property string  $content
+ * @property string  $default_content
  * @property integer $status
  * @property string  $metaTitle
  * @property string  $metaDescription
@@ -72,6 +73,7 @@ class CmsModel extends ActiveRecord
             'url' => Yii::t('app', 'Url'),
             'title' => Yii::t('app', 'Title'),
             'content' => Yii::t('app', 'Content'),
+            'default_content' => Yii::t('app', 'Default Content'),
             'status' => Yii::t('app', 'Status'),
             'metaTitle' => Yii::t('app', 'Meta Title'),
             'metaDescription' => Yii::t('app', 'Meta Description'),
@@ -111,6 +113,42 @@ class CmsModel extends ActiveRecord
         return self::find()
             ->where(['url' => $url, 'status' => CmsStatus::ENABLED])
             ->one();
+    }
+
+    /**
+     * Reverts model to default data
+     *
+     * @return $this
+     */
+    public function revert()
+    {
+        $this->content = $this->default_content;
+        return $this;
+    }
+
+    /**
+     * Returns content and replace widgets short codes
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        $content = preg_replace_callback('/\[\[([^(\[\[)]+:[^(\[\[)]+)\]\]/is', [$this, 'replace'], $this->content);
+        return $content;
+    }
+
+    /**
+     * Replaces widget short code on appropriate widget
+     * @param $data
+     * @return string
+     */
+    private function replace($data)
+    {
+        $widget = explode(':', $data[1]);
+        if (class_exists($class = 'app\widgets\\' . $widget[0]) && method_exists($class, $method = 'insert' . ucfirst($widget[1]))) {
+            return call_user_func([$class, $method]);
+        }
+        return '';
     }
 }
 
