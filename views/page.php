@@ -4,6 +4,7 @@
  * @var object \yii2mod\cms\models\CmsModel $model
  */
 
+$this->params['bodyClass'] = $model->url;
 ?>
 
 <div class="static-page">
