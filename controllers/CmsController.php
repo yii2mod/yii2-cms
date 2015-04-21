@@ -102,6 +102,9 @@ class CmsController extends Controller
     {
         $model = $this->findModel($id);
 
+        if (Yii::$app->session->remove('revert')) {
+            $model->revert();
+        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', 'Page has been updated.');
             return $this->redirect(['index']);
@@ -124,6 +127,19 @@ class CmsController extends Controller
         $this->findModel($id)->delete();
         Yii::$app->session->setFlash('success', 'Page has been deleted.');
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Reverts an existing CmsModel model to default data
+     *
+     * @param integer $id
+     *
+     * @return mixed
+     */
+    public function actionRevert($id)
+    {
+        Yii::$app->session->set('revert', true);
+        return $this->redirect(['update', 'id' => $id]);
     }
 
     /**

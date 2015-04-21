@@ -19,8 +19,47 @@ use \yii2mod\cms\models\enumerables\CmsStatus;
     <?php echo $form->field($model, 'content')->widget(Widget::className(), [
         'options' => [
             'minHeight' => 200,
+            'replaceDivs' => false,
+            'formatting' => ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'span'],
+            'formattingAdd' => [
+                [
+                    'tag' => 'span',
+                    'title' => 'Color Green',
+                    'class' => 'green',
+                ],
+                [
+                    'tag' => 'span',
+                    'title' => 'Color Gray',
+                    'class' => 'gray',
+                ],
+                [
+                    'tag' => 'span',
+                    'title' => 'Font Size 10px',
+                    'class' => 'font-size-10',
+                ],
+                [
+                    'tag' => 'span',
+                    'title' => 'Font Size 15px',
+                    'class' => 'font-size-15',
+                ],
+                [
+                    'tag' => 'span',
+                    'title' => 'Font Size 20px',
+                    'class' => 'font-size-20',
+                ],
+                [
+                    'tag' => 'span',
+                    'title' => 'Font Size 25px',
+                    'class' => 'font-size-25',
+                ],
+                [
+                    'tag' => 'span',
+                    'title' => 'Font Size 30px',
+                    'class' => 'font-size-30',
+                ],
+            ],
         ],
-        'id' => 'content'
+        'id' => 'content',
     ]);
     ?>
 
@@ -39,6 +78,9 @@ use \yii2mod\cms\models\enumerables\CmsStatus;
     <div class="form-group">
         <?php echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']); ?>
         <?php echo Html::a(Yii::t('app', 'Cancel'), ['index'], ['class' => 'btn btn-default']); ?>
+        <?php if (!$model->isNewRecord) : ?>
+            <?php echo Html::a('Revert Content To Default', ['revert', 'id' => $model->id], ['class' => 'btn btn-primary']); ?>
+        <?php endif; ?>
     </div>
 
     <?php ActiveForm::end(); ?>

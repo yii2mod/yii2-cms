@@ -4,6 +4,7 @@
  * @var object \yii2mod\cms\models\CmsModel $model
  */
 
+$this->params['bodyClass'] = $model->url;
 ?>
 
 <div class="static-page">
@@ -13,7 +14,7 @@
     $this->registerMetaTag(['name' => 'description', 'content' => $model->metaDescription]);
     ?>
     <h1><?php echo $model->title; ?></h1>
-    <?php echo $model->content; ?>
+    <?php echo $model->getContent(); ?>
 </div>
 
 
