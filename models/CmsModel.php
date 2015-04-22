@@ -145,7 +145,7 @@ class CmsModel extends ActiveRecord
     private function replace($data)
     {
         $widget = explode(':', $data[1]);
-        if (class_exists($class = 'app\widgets\\' . $widget[0]) && method_exists($class, $method = 'insert' . ucfirst($widget[1]))) {
+        if (class_exists($class = $widget[0]) && method_exists($class, $method = 'insert' . ucfirst($widget[1]))) {
             return call_user_func([$class, $method]);
         }
         return '';
