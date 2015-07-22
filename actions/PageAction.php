@@ -2,8 +2,8 @@
 
 namespace yii2mod\cms\actions;
 
-use yii\base\Action;
 use Yii;
+use yii\base\Action;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 use yii2mod\cms\models\CmsModel;
@@ -11,7 +11,6 @@ use yii2mod\cms\models\CmsModel;
 /**
  * Class PageAction
  * Render cms page
- * @author  Kravchuk Dmitry
  * @package yii2mod\cms\actions
  */
 class PageAction extends Action
@@ -29,21 +28,28 @@ class PageAction extends Action
     public $view = '@vendor/yii2mod/yii2-cms/views/page';
 
     /**
+     * @var null
+     */
+    public $pageId = null;
+
+    /**
      * Base template params
      * @var array
      */
     public $baseTemplateParams = [];
 
     /**
-     * @author Kravchuk Dmitry
      * @throws \yii\web\NotFoundHttpException
      * @return string
      */
     public function run()
     {
-        $pageId = Yii::$app->request->get('pageId');
-        if (!is_null($pageId)) {
-            $model = CmsModel::findOne($pageId);
+        if ($this->pageId === null) {
+            $this->pageId = Yii::$app->request->get('pageId');
+        }
+
+        if (!is_null($this->pageId)) {
+            $model = CmsModel::findOne($this->pageId);
             if ($model) {
                 $model->content = $this->parseBaseTemplateParams($model->content);
                 if (!empty($this->layout)) {
