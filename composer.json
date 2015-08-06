@@ -16,12 +16,12 @@
     ],
     "require": {
 	    "yii2mod/yii2-enum": "dev-master",
-	    "kartik-v/yii2-grid": "dev-master",
-	    "kartik-v/yii2-detail-view": "*",
-        "kartik-v/yii2-mpdf": "dev-master",
+	    "kartik-v/yii2-grid": "3.0.6",
+	    "kartik-v/yii2-detail-view": "1.7.1",
+            "kartik-v/yii2-mpdf": "1.0.2",
 	    "asofter/yii2-imperavi-redactor": "*",
-        "yii2mod/yii2-editable": "*",
-        "yii2mod/yii2-toggle-column": "*"
+            "yii2mod/yii2-editable": "*",
+            "yii2mod/yii2-toggle-column": "*"
     },
     "autoload": {
         "psr-4": {
