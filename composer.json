@@ -15,8 +15,7 @@
         }
     ],
     "require": {
-	    "yii2mod/yii2-enum": "dev-master",
-	    "kartik-v/yii2-grid": "dev-master",
+	    "yii2mod/yii2-enum": "*",
 	    "asofter/yii2-imperavi-redactor": "*",
             "yii2mod/yii2-editable": "*",
             "yii2mod/yii2-toggle-column": "*"
