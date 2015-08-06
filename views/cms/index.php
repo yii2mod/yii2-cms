@@ -1,6 +1,6 @@
 <?php
 
-use kartik\grid\GridView;
+use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
@@ -9,6 +9,7 @@ use yii2mod\editable\EditableColumn;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $searchModel \yii2mod\cms\models\search\CmsModelSearch */
 
 $this->title = Yii::t('app', 'Cms Pages');
 $this->params['breadcrumbs'][] = $this->title;
