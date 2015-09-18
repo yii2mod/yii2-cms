@@ -37,6 +37,9 @@ To use this extension, you have to configure the main config in your application
         'admin' => [
             'controllerMap' => [
                 'cms' => 'yii2mod\cms\controllers\CmsController'
+                // You can set your template files
+                // 'layout' => '@app/modules/backend/views/layouts/main',
+                // 'viewPath' => '@app/modules/backend/views/cms/',
             ],
         ],
     ],
@@ -61,6 +64,8 @@ Add to SiteController (or configure via `$route` param in urlManager):
         return [
             'page' => [
                 'class' => 'yii2mod\cms\actions\PageAction',
+                // You can set your template files
+                'view' => '@app/views/site/page'
             ],
         ];
     }
