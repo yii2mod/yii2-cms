@@ -17,6 +17,7 @@ use yii2mod\toggle\actions\ToggleAction;
 class CmsController extends Controller
 {
 
+    public $viewPath = '@vendor/yii2mod/yii2-cms/views/cms/';
     /**
      * Returns a list of behaviors that this component should behave as.
      *
@@ -65,7 +66,7 @@ class CmsController extends Controller
         $searchModel = new CmsModelSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('@vendor/yii2mod/yii2-cms/views/cms/index', [
+        return $this->render($this->viewPath . 'index', [
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel
         ]);
@@ -85,7 +86,7 @@ class CmsController extends Controller
             return $this->redirect(['index']);
         }
 
-        return $this->render('@vendor/yii2mod/yii2-cms/views/cms/create', [
+        return $this->render($this->viewPath . 'create', [
             'model' => $model,
         ]);
     }
@@ -109,7 +110,7 @@ class CmsController extends Controller
             Yii::$app->session->setFlash('success', 'Page has been updated.');
             return $this->redirect(['index']);
         }
-        return $this->render('@vendor/yii2mod/yii2-cms/views/cms/update', [
+        return $this->render($this->viewPath . 'update', [
             'model' => $model,
         ]);
     }
