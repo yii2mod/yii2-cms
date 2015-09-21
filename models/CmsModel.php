@@ -69,17 +69,17 @@ class CmsModel extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('modcms', 'ID'),
-            'url' => Yii::t('modcms', 'Url'),
-            'title' => Yii::t('modcms', 'Title'),
-            'content' => Yii::t('modcms', 'Content'),
-            'default_content' => Yii::t('modcms', 'Default Content'),
-            'status' => Yii::t('modcms', 'Status'),
-            'metaTitle' => Yii::t('modcms', 'Meta Title'),
-            'metaDescription' => Yii::t('modcms', 'Meta Description'),
-            'metaKeywords' => Yii::t('modcms', 'Meta Keywords'),
-            'createdAt' => Yii::t('modcms', 'Date Created'),
-            'updatedAt' => Yii::t('modcms', 'Date Updated'),
+            'id' => Yii::t('yii2mod', 'ID'),
+            'url' => Yii::t('yii2mod', 'Url'),
+            'title' => Yii::t('yii2mod', 'Title'),
+            'content' => Yii::t('yii2mod', 'Content'),
+            'default_content' => Yii::t('yii2mod', 'Default Content'),
+            'status' => Yii::t('yii2mod', 'Status'),
+            'metaTitle' => Yii::t('yii2mod', 'Meta Title'),
+            'metaDescription' => Yii::t('yii2mod', 'Meta Description'),
+            'metaKeywords' => Yii::t('yii2mod', 'Meta Keywords'),
+            'createdAt' => Yii::t('yii2mod', 'Date Created'),
+            'updatedAt' => Yii::t('yii2mod', 'Date Updated'),
         ];
     }
 
