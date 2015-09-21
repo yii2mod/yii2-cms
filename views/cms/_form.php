@@ -73,7 +73,10 @@ use \yii2mod\cms\models\enumerables\CmsStatus;
 
     <?php echo $form->field($model, 'metaKeywords')->textarea(['rows' => 6]); ?>
 
-    <?php echo $form->field($model, 'status')->dropDownList(CmsStatus::$list); ?>
+    <?php echo $form->field($model, 'status')->dropDownList([
+        Yii::t('modcms', CmsStatus::$$list[CmsStatus::ENABLED]),
+        Yii::t('modcms', CmsStatus::$$list[CmsStatus::DISABLED]),
+    ]); ?>
 
     <div class="form-group">
         <?php echo Html::submitButton($model->isNewRecord ? Yii::t('modcms', 'Create') : Yii::t('modcms', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']); ?>
