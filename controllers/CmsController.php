@@ -82,7 +82,7 @@ class CmsController extends Controller
         $model = new CmsModel();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', App::t('modcms', 'Page has been created.'));
+            Yii::$app->session->setFlash('success', App::t('yii2mod', 'Page has been created.'));
             return $this->redirect(['index']);
         }
 
@@ -107,7 +107,7 @@ class CmsController extends Controller
             $model->revert();
         }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', App::t('modcms', 'Page has been updated.'));
+            Yii::$app->session->setFlash('success', App::t('yii2mod', 'Page has been updated.'));
             return $this->redirect(['index']);
         }
         return $this->render($this->viewPath . 'update', [
@@ -126,7 +126,7 @@ class CmsController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        Yii::$app->session->setFlash('success', App::t('modcms', 'Page has been deleted.'));
+        Yii::$app->session->setFlash('success', App::t('yii2mod', 'Page has been deleted.'));
         return $this->redirect(['index']);
     }
 
@@ -157,7 +157,7 @@ class CmsController extends Controller
         if (($model = CmsModel::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException(App::t('modcms', 'The requested page does not exist.'));
+            throw new NotFoundHttpException(App::t('yii2mod', 'The requested page does not exist.'));
         }
     }
 
