@@ -11,7 +11,7 @@ use yii2mod\editable\EditableColumn;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $searchModel \yii2mod\cms\models\search\CmsModelSearch */
 
-$this->title = Yii::t('app', 'Cms Pages');
+$this->title = Yii::t('modcms', 'Cms Pages');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cms-model-index">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?php echo Html::encode($this->title) ?></h1>
 
     <p>
-        <?php echo Html::a(Yii::t('app', 'Create Page', [
+        <?php echo Html::a(Yii::t('modcms', 'Create Page', [
             'modelClass' => 'Cms Model',
         ]), ['create'], ['class' => 'btn btn-success']);
         ?>
