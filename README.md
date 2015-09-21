@@ -7,7 +7,7 @@ Update warning
 --------------
 
 Warning!
-Messages moved from `app` to `modcms`. Beware.
+Messages moved from `app` to `yii2mod`. Beware.
 
 
 Installation
