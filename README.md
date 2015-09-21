@@ -3,6 +3,12 @@ CMS Extension
 * [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/?branch=master) 
 * [![Build Status](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/badges/build.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/build-status/master)
 
+Update warning
+--------------
+
+Warning!
+Messages moved from `app` to `modcms`. Beware.
+
 
 Installation
 ------------
