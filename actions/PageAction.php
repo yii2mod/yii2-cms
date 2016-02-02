@@ -86,7 +86,8 @@ class PageAction extends Action
     protected function getBaseTemplateParams()
     {
         return ArrayHelper::merge($this->baseTemplateParams, [
-            'homeUrl' => \Yii::$app->urlManager->baseUrl
+            'homeUrl' => Yii::$app->urlManager->baseUrl,
+            'siteName' => Yii::$app->name
         ]);
     }
 
