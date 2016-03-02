@@ -17,10 +17,9 @@ use \yii2mod\cms\models\enumerables\CmsStatus;
     <?php echo $form->field($model, 'title')->textInput(['maxlength' => 255]); ?>
 
     <?php echo $form->field($model, 'content')->widget(Widget::className(), [
+        'plugins' => ['video', 'fullscreen', 'table'],
         'options' => [
             'minHeight' => 200,
-            'replaceDivs' => false,
-            'formatting' => ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'span']
         ],
         'id' => 'content',
     ]);
