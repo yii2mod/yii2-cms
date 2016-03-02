@@ -11,7 +11,7 @@ use yii2mod\editable\EditableColumn;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $searchModel \yii2mod\cms\models\search\CmsModelSearch */
 
-$this->title = Yii::t('app', 'Cms Pages');
+$this->title = Yii::t('yii2mod', 'Cms Pages');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cms-model-index">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?php echo Html::encode($this->title) ?></h1>
 
     <p>
-        <?php echo Html::a(Yii::t('app', 'Create Page', [
+        <?php echo Html::a(Yii::t('yii2mod', 'Create Page', [
             'modelClass' => 'Cms Model',
         ]), ['create'], ['class' => 'btn btn-success']);
         ?>
@@ -44,12 +44,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => '\yii2mod\toggle\ToggleColumn',
                 'attribute' => 'status',
                 'filter' => CmsStatus::listData(),
-                'filterInputOptions' => ['prompt' => 'Select Status', 'class' => 'form-control'],
+                'filterInputOptions' => ['prompt' => Yii::t('yii2mod', 'Select Status'), 'class' => 'form-control'],
             ],
             [
                 'attribute' => 'createdAt',
                 'value' => function ($model) {
-                    return date("d-M-Y", $model->createdAt);
+                    return date(Yii::t('yii2mod', "d-M-Y"), $model->createdAt);
                 },
                 'filter' => false,
             ],
@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', Url::to($model->url, true),
-                            ['title' => 'View', 'data-pjax' => 0, 'target' => '_blank']);
+                            ['title' => Yii::t('yii2mod', 'View'), 'data-pjax' => 0, 'target' => '_blank']);
                     }
                 ],
             ]

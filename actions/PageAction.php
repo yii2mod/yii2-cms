@@ -60,7 +60,7 @@ class PageAction extends Action
                 ]);
             }
         }
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException(App::t('yii2mod', 'The requested page does not exist.'));
     }
 
     /**

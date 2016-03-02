@@ -65,7 +65,7 @@ use \yii2mod\cms\models\enumerables\CmsStatus;
 
     <?php echo $form->field($model, 'url', [
         'inputTemplate' => '<div class="input-group"><span class="input-group-addon">' . Yii::$app->urlManager->hostInfo . '/' . '</span>{input}</div>',
-    ])->textInput(['maxlength' => 255])->hint('This one accepts only letters, numbers, dash and slash, i.e. "docs/installation".'); ?>
+    ])->textInput(['maxlength' => 255])->hint(Yii::t('yii2mod', 'This one accepts only letters, numbers, dash and slash, i.e. "docs/installation".')); ?>
 
     <?php echo $form->field($model, 'metaTitle')->textInput(['maxlength' => 255]); ?>
 
@@ -73,13 +73,13 @@ use \yii2mod\cms\models\enumerables\CmsStatus;
 
     <?php echo $form->field($model, 'metaKeywords')->textarea(['rows' => 6]); ?>
 
-    <?php echo $form->field($model, 'status')->dropDownList(CmsStatus::$list); ?>
+    <?php echo $form->field($model, 'status')->dropDownList(CmsStatus::listData()); ?>
 
     <div class="form-group">
-        <?php echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']); ?>
-        <?php echo Html::a(Yii::t('app', 'Cancel'), ['index'], ['class' => 'btn btn-default']); ?>
+        <?php echo Html::submitButton($model->isNewRecord ? Yii::t('yii2mod', 'Create') : Yii::t('yii2mod', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']); ?>
+        <?php echo Html::a(Yii::t('yii2mod', 'Cancel'), ['index'], ['class' => 'btn btn-default']); ?>
         <?php if (!$model->isNewRecord) : ?>
-            <?php echo Html::a('Revert Content To Default', ['revert', 'id' => $model->id], ['class' => 'btn btn-primary']); ?>
+            <?php echo Html::a(Yii::t('yii2mod', 'Revert Content To Default'), ['revert', 'id' => $model->id], ['class' => 'btn btn-primary']); ?>
         <?php endif; ?>
     </div>
 
