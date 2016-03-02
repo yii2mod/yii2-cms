@@ -6,23 +6,15 @@ use yii\web\UrlRule;
 use yii2mod\cms\models\CmsModel;
 
 /**
- * @author  Kravchuk Dmitry
- * @author  Dmitry Semenov <disemx@gmail.com>
  * Class PageUrlRule
  * @package yii2mod\cms\components
  */
 class PageUrlRule extends UrlRule
 {
-
     /**
      * @var string
      */
     public $pattern = '<\w+>';
-
-    /**
-     * @var string
-     */
-    public $connectionID = 'db';
 
     /**
      * @var string
@@ -45,7 +37,7 @@ class PageUrlRule extends UrlRule
         // find page by url in db
         $page = (new CmsModel())->findPage($url);
         // redirect to page
-        if (!is_null($page)) {
+        if (!empty($page)) {
             $params['pageAlias'] = $url;
             $params['pageId'] = $page->id;
             return [$this->route, $params];

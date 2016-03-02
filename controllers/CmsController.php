@@ -12,17 +12,18 @@ use yii2mod\editable\EditableAction;
 use yii2mod\toggle\actions\ToggleAction;
 
 /**
- * CmsController implements the CRUD actions for CmsModel model.
+ * Class CmsController
+ * @package yii2mod\cms\controllers
  */
 class CmsController extends Controller
 {
-
-    public $viewPath = '@vendor/yii2mod/yii2-cms/views/cms/';
     /**
-     * Returns a list of behaviors that this component should behave as.
-     *
-     * Child classes may override this method to specify the behaviors they want to behave as.
-     * @return array
+     * @var string view path
+     */
+    public $viewPath = '@vendor/yii2mod/yii2-cms/views/cms/';
+
+    /**
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -30,17 +31,17 @@ class CmsController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'index' => ['get'],
+                    'create' => ['get', 'post'],
+                    'update' => ['get', 'post'],
+                    'delete' => ['post']
                 ],
             ]
         ];
     }
 
-
     /**
-     * Declares external actions for the controller.
-     * This method is meant to be overwritten to declare external actions for the controller.
-     * @return array
+     * @inheritdoc
      */
     public function actions()
     {
@@ -82,7 +83,7 @@ class CmsController extends Controller
         $model = new CmsModel();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', 'Page has been created.');
+            Yii::$app->session->setFlash('success', Yii::t('yii2mod.cms', 'Page has been created.'));
             return $this->redirect(['index']);
         }
 
@@ -103,11 +104,8 @@ class CmsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if (Yii::$app->session->remove('revert')) {
-            $model->revert();
-        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', 'Page has been updated.');
+            Yii::$app->session->setFlash('success', Yii::t('yii2mod.cms', 'Page has been updated.'));
             return $this->redirect(['index']);
         }
         return $this->render($this->viewPath . 'update', [
@@ -126,21 +124,8 @@ class CmsController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        Yii::$app->session->setFlash('success', 'Page has been deleted.');
+        Yii::$app->session->setFlash('success', Yii::t('yii2mod.cms', 'Page has been deleted.'));
         return $this->redirect(['index']);
-    }
-
-    /**
-     * Reverts an existing CmsModel model to default data
-     *
-     * @param integer $id
-     *
-     * @return mixed
-     */
-    public function actionRevert($id)
-    {
-        Yii::$app->session->set('revert', true);
-        return $this->redirect(['update', 'id' => $id]);
     }
 
     /**
@@ -157,7 +142,7 @@ class CmsController extends Controller
         if (($model = CmsModel::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException(Yii::t('yii2mod.cms', 'The requested page does not exist.'));
         }
     }
 

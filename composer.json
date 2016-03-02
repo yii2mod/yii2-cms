@@ -2,7 +2,10 @@
     "name": "yii2mod/yii2-cms",
     "description": "Yii2 CMS extension",
     "type": "yii2-extension",
-    "keywords": ["yii2", "extension"],
+    "keywords": [
+        "yii2",
+        "extension"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -15,10 +18,11 @@
         }
     ],
     "require": {
-	    "yii2mod/yii2-enum": "*",
-	    "asofter/yii2-imperavi-redactor": "*",
-            "yii2mod/yii2-editable": "*",
-            "yii2mod/yii2-toggle-column": "*"
+        "yii2mod/yii2-enum": "*",
+        "asofter/yii2-imperavi-redactor": "*",
+        "yii2mod/yii2-editable": "*",
+        "yii2mod/yii2-toggle-column": "*",
+        "yii2mod/yii2-comments": "*"
     },
     "autoload": {
         "psr-4": {

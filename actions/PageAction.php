@@ -17,28 +17,27 @@ class PageAction extends Action
 {
 
     /**
-     * @var string
+     * @var string custom layout
      */
     public $layout = '';
 
     /**
-     * Page path
-     * @var string
+     * @var string Page path
      */
     public $view = '@vendor/yii2mod/yii2-cms/views/page';
 
     /**
-     * @var null
+     * @var null pageId
      */
     public $pageId = null;
 
     /**
-     * Base template params
-     * @var array
+     * @var array base template params
      */
     public $baseTemplateParams = [];
 
     /**
+     * Run action
      * @throws \yii\web\NotFoundHttpException
      * @return string
      */
@@ -48,9 +47,9 @@ class PageAction extends Action
             $this->pageId = Yii::$app->request->get('pageId');
         }
 
-        if (!is_null($this->pageId)) {
+        if (!empty($this->pageId)) {
             $model = CmsModel::findOne($this->pageId);
-            if ($model) {
+            if (!empty($model)) {
                 $model->content = $this->parseBaseTemplateParams($model->content);
                 if (!empty($this->layout)) {
                     $this->controller->layout = $this->layout;
@@ -60,7 +59,7 @@ class PageAction extends Action
                 ]);
             }
         }
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException(Yii::t('yii2mod.cms', 'The requested page does not exist.'));
     }
 
     /**

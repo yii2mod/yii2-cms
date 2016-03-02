@@ -14,13 +14,12 @@ class CmsModelSearch extends CmsModel
 {
 
     /**
-     * Returns the validation rules for attributes.
-     * @return array validation rules
+     * @inheritdoc
      */
     public function rules()
     {
         return ArrayHelper::merge([
-            [['id', 'url', 'title', 'status'], 'safe'],
+            [['id', 'url', 'title', 'status', 'commentAvailable'], 'safe'],
         ], parent::rules());
     }
 
@@ -53,6 +52,7 @@ class CmsModelSearch extends CmsModel
         //adjust the query by adding the filters
         $query->andFilterWhere(['id' => $this->id]);
         $query->andFilterWhere(['status' => $this->status]);
+        $query->andFilterWhere(['commentAvailable' => $this->commentAvailable]);
         $query->andFilterWhere(['like', 'url', $this->url]);
         $query->andFilterWhere(['like', 'title', $this->title]);
 

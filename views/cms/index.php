@@ -6,12 +6,13 @@ use yii\helpers\Url;
 use yii\widgets\Pjax;
 use yii2mod\cms\models\enumerables\CmsStatus;
 use yii2mod\editable\EditableColumn;
+use yii2mod\enum\helpers\BooleanEnum;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $searchModel \yii2mod\cms\models\search\CmsModelSearch */
 
-$this->title = Yii::t('app', 'Cms Pages');
+$this->title = Yii::t('yii2mod.cms', 'Cms Pages');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cms-model-index">
@@ -19,12 +20,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?php echo Html::encode($this->title) ?></h1>
 
     <p>
-        <?php echo Html::a(Yii::t('app', 'Create Page', [
-            'modelClass' => 'Cms Model',
-        ]), ['create'], ['class' => 'btn btn-success']);
-        ?>
+        <?php echo Html::a(Yii::t('yii2mod.cms', 'Create Page'), ['create'], ['class' => 'btn btn-success']); ?>
     </p>
-    <?php Pjax::begin(['enablePushState' => false, 'timeout' => 5000]); ?>
+    <?php Pjax::begin(['timeout' => 5000]); ?>
     <?php echo GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -44,12 +42,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => '\yii2mod\toggle\ToggleColumn',
                 'attribute' => 'status',
                 'filter' => CmsStatus::listData(),
-                'filterInputOptions' => ['prompt' => 'Select Status', 'class' => 'form-control'],
+                'filterInputOptions' => ['prompt' => Yii::t('yii2mod.cms', 'Select Status'), 'class' => 'form-control'],
+            ],
+            [
+                'class' => '\yii2mod\toggle\ToggleColumn',
+                'attribute' => 'commentAvailable',
+                'filter' => BooleanEnum::listData(),
+                'filterInputOptions' => ['prompt' => Yii::t('yii2mod.cms', 'Please Select'), 'class' => 'form-control'],
             ],
             [
                 'attribute' => 'createdAt',
                 'value' => function ($model) {
-                    return date("d-M-Y", $model->createdAt);
+                    return Yii::$app->formatter->asDate($model->createdAt, 'full');
                 },
                 'filter' => false,
             ],
@@ -60,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', Url::to($model->url, true),
-                            ['title' => 'View', 'data-pjax' => 0, 'target' => '_blank']);
+                            ['title' => Yii::t('yii2mod.cms', 'View'), 'data-pjax' => 0, 'target' => '_blank']);
                     }
                 ],
             ]
