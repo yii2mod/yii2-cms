@@ -26,12 +26,14 @@ to the require section of your composer.json.
 
 Usage
 ======================================
-If you use this extension separate from the [base template](https://github.com/yii2mod/base), then you need execute cms init migration by the following command: 
+If you use this extension separate from the [base template](https://github.com/yii2mod/base), then you need execute migration by the following command:
 ```
-php yii migrate/up --migrationPath=@yii2mod/cms/migrations
+php yii migrate --migrationPath=@vendor/yii2mod/cms/migrations
 ```
 
-To use this extension, you have to configure the main config in your application:
+> NOTE: comments extension used in 1.0.4 release and above, if you are using a previous version of this extension, you don't need to install [comments extension](https://github.com/yii2mod/yii2-comments).
+
+To use this extension first you need to configure the [comments extension](https://github.com/yii2mod/yii2-comments), after that you have to configure the main config in your application:
 ```php
 'modules' => [
         'admin' => [
