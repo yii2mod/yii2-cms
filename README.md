@@ -28,7 +28,7 @@ Usage
 ======================================
 If you use this extension separate from the [base template](https://github.com/yii2mod/base), then you need execute migration by the following command:
 ```
-php yii migrate --migrationPath=@vendor/yii2mod/cms/migrations
+php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
 ```
 
 > NOTE: comments extension used in 1.0.5 release and above, if you are using a previous version of this extension, you don't need to install [comments extension](https://github.com/yii2mod/yii2-comments).
