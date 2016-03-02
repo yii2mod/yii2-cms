@@ -31,7 +31,7 @@ If you use this extension separate from the [base template](https://github.com/y
 php yii migrate --migrationPath=@vendor/yii2mod/cms/migrations
 ```
 
-> NOTE: comments extension used in 1.0.4 release and above, if you are using a previous version of this extension, you don't need to install [comments extension](https://github.com/yii2mod/yii2-comments).
+> NOTE: comments extension used in 1.0.5 release and above, if you are using a previous version of this extension, you don't need to install [comments extension](https://github.com/yii2mod/yii2-comments).
 
 To use this extension first you need to configure the [comments extension](https://github.com/yii2mod/yii2-comments), after that you have to configure the main config in your application:
 ```php
