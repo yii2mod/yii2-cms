@@ -46,7 +46,11 @@ To use this extension first you need to configure the [comments extension](https
         ],
     ],
 ```
-
+**You can then access to management section through the following URL:**
+  ```
+    http://localhost/path/to/index.php?r=admin/cms/index
+  ```
+Add new Rule class to the `urlManager` array in your application configuration by the following code:
 ```php
  'components' => [
         'urlManager' => [
@@ -56,7 +60,7 @@ To use this extension first you need to configure the [comments extension](https
         ],
     ],
 ```
-Add to SiteController (or configure via `$route` param in urlManager):
+Add to SiteController (or configure via `$route` param in `urlManager`):
 ```php
     /**
      * @return array
@@ -72,3 +76,5 @@ Add to SiteController (or configure via `$route` param in urlManager):
         ];
     }
 ```
+
+**And now you can create your own pages via the admin panel, and access them via the `url` of each page.**
