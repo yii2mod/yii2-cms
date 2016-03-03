@@ -21,6 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php echo Html::a(Yii::t('yii2mod.cms', 'Create Page'), ['create'], ['class' => 'btn btn-success']); ?>
+        <?php echo Html::a(Yii::t('yii2mod.cms', 'View Comments'), ['/admin/comments/index'], ['class' => 'btn btn-success']); ?>
     </p>
     <?php Pjax::begin(['timeout' => 5000]); ?>
     <?php echo GridView::widget([
