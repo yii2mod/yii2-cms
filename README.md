@@ -24,16 +24,16 @@ or add
 to the require section of your composer.json.
 
 
-Usage
+CONFIGURATION
 ======================================
-If you use this extension separate from the [base template](https://github.com/yii2mod/base), then you need execute migration by the following command:
+> If you use this extension separate from the [base template](https://github.com/yii2mod/base), then you need execute migration by the following command:
 ```
 php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
 ```
 
 > NOTE: comments extension used in 1.0.5 release and above, if you are using a previous version of this extension, you don't need to install [comments extension](https://github.com/yii2mod/yii2-comments).
 
-To use this extension first you need to configure the [comments extension](https://github.com/yii2mod/yii2-comments), after that you have to configure the main config in your application:
+1) To use this extension first you need to configure the [comments extension](https://github.com/yii2mod/yii2-comments), after that you have to configure the main config in your application:
 ```php
 'modules' => [
         'admin' => [
@@ -46,11 +46,13 @@ To use this extension first you need to configure the [comments extension](https
         ],
     ],
 ```
-**You can then access to management section through the following URL:**
-  ```
-    http://localhost/path/to/index.php?r=admin/cms/index
-  ```
-Add new Rule class to the `urlManager` array in your application configuration by the following code:
+> **You can then access to management section through the following URL:**
+
+> http://localhost/path/to/index.php?r=admin/cms/index
+  
+
+2) Add new Rule class to the `urlManager` array in your application configuration by the following code:
+ 
 ```php
  'components' => [
         'urlManager' => [
@@ -60,7 +62,8 @@ Add new Rule class to the `urlManager` array in your application configuration b
         ],
     ],
 ```
-Add to SiteController (or configure via `$route` param in `urlManager`):
+
+3) Add to SiteController (or configure via `$route` param in `urlManager`):
 ```php
     /**
      * @return array
@@ -76,5 +79,22 @@ Add to SiteController (or configure via `$route` param in `urlManager`):
         ];
     }
 ```
+> And now you can create your own pages via the admin panel, and access them via the `url` of each page.
 
-**And now you can create your own pages via the admin panel, and access them via the `url` of each page.**
+**Additional features:**
+
+1. You can insert your own widget on the page by the following steps:
+    * Create the widget and add the static function for example:
+   
+     ```php
+       public static function insertList() {
+           return self::widget([
+               //your params
+           ]);
+       }
+      ```
+    * When you create the page via admin panel add the following code to the content:
+    
+      ```
+         \app\widgets\MyWidget:list() // call the function insertList placed in MyWidget class
+      ```
