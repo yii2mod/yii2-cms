@@ -84,7 +84,7 @@ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
 **Additional features:**
 
 1. You can insert your own widget on the page by the following steps:
-    * Create the widget and add the static function for example:
+    * Create the widget and add the static function. For example:
    
      ```php
        public static function insertList() {
