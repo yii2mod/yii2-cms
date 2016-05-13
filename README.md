@@ -1,7 +1,9 @@
 CMS Extension
 ========================
-* [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/?branch=master) 
-* [![Build Status](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/badges/build.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/build-status/master)
+Base content management system for Yii Framework 2.0
+
+[![Latest Stable Version](https://poser.pugx.org/yii2mod/yii2-cms/v/stable)](https://packagist.org/packages/yii2mod/yii2-cms) [![Total Downloads](https://poser.pugx.org/yii2mod/yii2-cms/downloads)](https://packagist.org/packages/yii2mod/yii2-cms) [![License](https://poser.pugx.org/yii2mod/yii2-cms/license)](https://packagist.org/packages/yii2mod/yii2-cms)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/badges/build.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/build-status/master)
 
 
 Installation
