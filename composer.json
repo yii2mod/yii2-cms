@@ -18,6 +18,7 @@
         }
     ],
     "require": {
+        "yiisoft/yii2": "*",
         "yii2mod/yii2-enum": "*",
         "asofter/yii2-imperavi-redactor": "*",
         "yii2mod/yii2-editable": "*",
