@@ -3,7 +3,6 @@
 namespace yii2mod\cms\models\search;
 
 use yii\data\ActiveDataProvider;
-use yii\helpers\ArrayHelper;
 use yii2mod\cms\models\CmsModel;
 
 /**
@@ -12,20 +11,19 @@ use yii2mod\cms\models\CmsModel;
  */
 class CmsModelSearch extends CmsModel
 {
-
     /**
      * @inheritdoc
      */
     public function rules()
     {
-        return ArrayHelper::merge([
+        return [
             [['id', 'url', 'title', 'status', 'commentAvailable'], 'safe'],
-        ], parent::rules());
+        ];
     }
-
 
     /**
      * Setup search function for filtering and sorting
+     *
      * @param $params
      * @return ActiveDataProvider
      */
@@ -59,5 +57,3 @@ class CmsModelSearch extends CmsModel
         return $dataProvider;
     }
 }
-
-    

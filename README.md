@@ -76,7 +76,13 @@ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
             'page' => [
                 'class' => 'yii2mod\cms\actions\PageAction',
                 // You can set your template files
-                'view' => '@app/views/site/page'
+                'layout' => '@app/modules/backend/views/layouts/main',
+                'viewPath' => '@app/modules/backend/views/cms/',
+                // You can set the parameters that you want to parse before page loading, for example:
+                'baseTemplateParams' => [
+                   '{homeUrl}' => 'your site home url',
+                   '{siteName}' => Yii::$app->name
+                ]
             ],
         ];
     }

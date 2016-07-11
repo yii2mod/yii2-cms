@@ -10,16 +10,14 @@ use yii2mod\cms\models\CmsModel;
 
 /**
  * Class PageAction
- * Render cms page
  * @package yii2mod\cms\actions
  */
 class PageAction extends Action
 {
-
     /**
      * @var string custom layout
      */
-    public $layout = '';
+    public $layout;
 
     /**
      * @var string Page path
@@ -27,9 +25,9 @@ class PageAction extends Action
     public $view = '@vendor/yii2mod/yii2-cms/views/page';
 
     /**
-     * @var null pageId
+     * @var mixed pageId
      */
-    public $pageId = null;
+    public $pageId;
 
     /**
      * @var array base template params
@@ -37,33 +35,40 @@ class PageAction extends Action
     public $baseTemplateParams = [];
 
     /**
+     * Initializes the object.
+     */
+    public function init()
+    {
+        if (empty($this->pageId)) {
+            $this->pageId = Yii::$app->request->get('pageId');
+        }
+
+        if (!empty($this->layout)) {
+            $this->controller->layout = $this->layout;
+        }
+
+        parent::init();
+    }
+
+    /**
      * Run action
+     *
      * @throws \yii\web\NotFoundHttpException
      * @return string
      */
     public function run()
     {
-        if ($this->pageId === null) {
-            $this->pageId = Yii::$app->request->get('pageId');
-        }
+        $model = $this->findModel();
+        $model->content = $this->parseBaseTemplateParams($model->content);
 
-        if (!empty($this->pageId)) {
-            $model = CmsModel::findOne($this->pageId);
-            if (!empty($model)) {
-                $model->content = $this->parseBaseTemplateParams($model->content);
-                if (!empty($this->layout)) {
-                    $this->controller->layout = $this->layout;
-                }
-                return $this->controller->render($this->view, [
-                    'model' => $model,
-                ]);
-            }
-        }
-        throw new NotFoundHttpException(Yii::t('yii2mod.cms', 'The requested page does not exist.'));
+        return $this->controller->render($this->view, [
+            'model' => $model,
+        ]);
     }
 
     /**
      * Parse base template params, like {homeUrl}
+     *
      * @param $pageContent
      * @return string
      */
@@ -80,7 +85,10 @@ class PageAction extends Action
 
     /**
      * Return base template params
+     *
      * If one of this params exist in page content, it will be parsed
+     *
+     * @return array
      */
     protected function getBaseTemplateParams()
     {
@@ -90,4 +98,18 @@ class PageAction extends Action
         ]);
     }
 
+    /**
+     * Find CmsModel
+     *
+     * @return null|CmsModel
+     * @throws NotFoundHttpException
+     */
+    protected function findModel()
+    {
+        if (($model = CmsModel::findOne($this->pageId)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException(Yii::t('yii2mod.cms', 'The requested page does not exist.'));
+    }
 }

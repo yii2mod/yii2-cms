@@ -23,7 +23,6 @@ use yii2mod\cms\models\enumerables\CmsStatus;
  */
 class CmsModel extends ActiveRecord
 {
-
     /**
      * @inheritdoc
      */
@@ -82,6 +81,16 @@ class CmsModel extends ActiveRecord
     }
 
     /**
+     * Creates an [[ActiveQueryInterface]] instance for query purpose.
+     *
+     * @return CmsQuery
+     */
+    public static function find()
+    {
+        return new CmsQuery(get_called_class());
+    }
+
+    /**
      * Find page by url
      *
      * @param $url
@@ -89,9 +98,7 @@ class CmsModel extends ActiveRecord
      */
     public function findPage($url)
     {
-        return self::find()
-            ->where(['url' => $url, 'status' => CmsStatus::ENABLED])
-            ->one();
+        return self::find()->byUrl($url)->enabled()->one();
     }
 
     /**
@@ -102,6 +109,7 @@ class CmsModel extends ActiveRecord
     public function getContent()
     {
         $content = preg_replace_callback('/\[\[([^(\[\[)]+:[^(\[\[)]+)\]\]/is', [$this, 'replace'], $this->content);
+
         return $content;
     }
 
@@ -117,8 +125,7 @@ class CmsModel extends ActiveRecord
         if (class_exists($class = $widget[0]) && method_exists($class, $method = 'insert' . ucfirst($widget[1]))) {
             return call_user_func([$class, $method]);
         }
+
         return '';
     }
 }
-
-    

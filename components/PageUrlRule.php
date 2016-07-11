@@ -12,12 +12,12 @@ use yii2mod\cms\models\CmsModel;
 class PageUrlRule extends UrlRule
 {
     /**
-     * @var string
+     * @var string the pattern used to parse and create the path info part of a URL.
      */
     public $pattern = '<\w+>';
 
     /**
-     * @var string
+     * @var string the route to the controller action
      */
     public $route = 'site/page';
 
@@ -42,7 +42,7 @@ class PageUrlRule extends UrlRule
             $params['pageId'] = $page->id;
             return [$this->route, $params];
         }
+
         return parent::parseRequest($manager, $request);
     }
-
 }
