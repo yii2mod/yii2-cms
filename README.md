@@ -27,7 +27,7 @@ to the require section of your composer.json.
 
 
 CONFIGURATION
-======================================
+------------
 > If you use this extension separate from the [base template](https://github.com/yii2mod/base), then you need execute migration by the following command:
 ```
 php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
