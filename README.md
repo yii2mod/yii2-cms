@@ -27,7 +27,7 @@ to the require section of your composer.json.
 
 
 CONFIGURATION
-======================================
+------------
 > If you use this extension separate from the [base template](https://github.com/yii2mod/base), then you need execute migration by the following command:
 ```
 php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
@@ -42,8 +42,8 @@ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
             'controllerMap' => [
                 'cms' => 'yii2mod\cms\controllers\CmsController'
                 // You can set your template files
-                // 'layout' => '@app/modules/backend/views/layouts/main',
-                // 'viewPath' => '@app/modules/backend/views/cms/',
+                'layout' => '@app/modules/backend/views/layouts/main',
+                'viewPath' => '@app/modules/backend/views/cms/'
             ],
         ],
     ],
@@ -77,13 +77,8 @@ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
                 'class' => 'yii2mod\cms\actions\PageAction',
                 // You can set your template files
                 'layout' => '@app/modules/backend/views/layouts/main',
-                'viewPath' => '@app/modules/backend/views/cms/',
-                // You can set the parameters that you want to parse before page loading, for example:
-                'baseTemplateParams' => [
-                   '{homeUrl}' => 'your site home url',
-                   '{siteName}' => Yii::$app->name
-                ]
-            ],
+                'viewPath' => '@app/modules/backend/views/cms/'
+            ]
         ];
     }
 ```
@@ -106,3 +101,23 @@ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
       ```
          \app\widgets\MyWidget:list() // call the function insertList placed in MyWidget class
       ```
+2. You can use parameters in your page content, for example: {siteName}, {homeUrl}. For parsing this parameters you can use the `baseTemplateParams` property:
+
+```php
+ /**
+     * @return array
+     */
+    public function actions()
+    {
+        return [
+            'page' => [
+                'class' => 'yii2mod\cms\actions\PageAction',
+                // You can set the parameters that you want to parse before the page is loaded, for example:
+                'baseTemplateParams' => [
+                   'homeUrl' => 'your site home url',
+                   'siteName' => Yii::$app->name
+                ]
+            ],
+        ];
+    }
+```
