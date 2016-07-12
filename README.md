@@ -78,7 +78,6 @@ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
                 // You can set your template files
                 'layout' => '@app/modules/backend/views/layouts/main',
                 'viewPath' => '@app/modules/backend/views/cms/'
-            ]
         ];
     }
 ```
