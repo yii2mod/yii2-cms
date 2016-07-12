@@ -103,7 +103,7 @@ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
 2. You can use parameters in your page content, for example: {siteName}, {homeUrl}. For parsing this parameters you can use the `baseTemplateParams` property:
 
 ```php
- /**
+    /**
      * @return array
      */
     public function actions()
