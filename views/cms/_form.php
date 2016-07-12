@@ -35,7 +35,7 @@ use \yii2mod\cms\models\enumerables\CmsStatus;
 
     <?php echo $form->field($model, 'metaKeywords')->textarea(['rows' => 6]); ?>
 
-    <?php echo $form->field($model, 'commentAvailable')->checkbox()->label(Yii::t('app', 'Are comments available on the page?')); ?>
+    <?php echo $form->field($model, 'commentAvailable')->checkbox()->label(Yii::t('yii2mod.cms', 'Are comments available on the page?')); ?>
 
     <?php echo $form->field($model, 'status')->dropDownList(CmsStatus::listData()); ?>
 

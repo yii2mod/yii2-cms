@@ -49,17 +49,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => '\yii2mod\toggle\ToggleColumn',
                 'attribute' => 'commentAvailable',
                 'filter' => BooleanEnum::listData(),
-                'filterInputOptions' => ['prompt' => Yii::t('yii2mod.cms', 'Please Select'), 'class' => 'form-control'],
+                'filterInputOptions' => ['prompt' => Yii::t('yii2mod.cms', 'Select'), 'class' => 'form-control'],
             ],
             [
                 'attribute' => 'createdAt',
-                'value' => function ($model) {
-                    return Yii::$app->formatter->asDate($model->createdAt, 'full');
-                },
-                'filter' => false,
+                'format' => ['date', 'full']
             ],
             [
-                'header' => 'Actions',
+                'header' => Yii::t('yii2mod.cms', 'Actions'),
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view}{update}{delete}',
                 'buttons' => [

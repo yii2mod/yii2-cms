@@ -83,7 +83,30 @@ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
 ```
 > And now you can create your own pages via the admin panel, and access them via the `url` of each page.
 
-**Additional features:**
+## Internationalization
+
+All text and messages introduced in this extension are translatable under category 'yii2mod.cms'.
+You may use translations provided within this extension, using following application configuration:
+
+```php
+return [
+    'components' => [
+        'i18n' => [
+            'translations' => [
+                'yii2mod.cms' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@yii2mod/cms/messages',
+                ],
+                // ...
+            ],
+        ],
+        // ...
+    ],
+    // ...
+];
+```
+
+##Additional features:
 
 1. You can insert your own widget on the page by the following steps:
     * Create the widget and add the static function. For example:
