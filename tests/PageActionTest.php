@@ -34,11 +34,8 @@ class PageActionTest extends TestCase
 
     public function testViewNotExistPage()
     {
-        try {
-            $this->runAction(['pageId' => 'not exist page']);
-        } catch (NotFoundHttpException $e) {
-            $this->assertEquals('The requested page does not exist.', $e->getMessage());
-        }
+        $this->setExpectedException('yii\web\NotFoundHttpException');
+        $this->runAction(['pageId' => 'not exist page']);
     }
 
     public function testViewPageWithParams()
