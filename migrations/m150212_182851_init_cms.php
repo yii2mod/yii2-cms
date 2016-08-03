@@ -1,8 +1,10 @@
 <?php
 
-use yii\db\Schema;
 use yii\db\Migration;
 
+/**
+ * Class m150212_182851_init_cms
+ */
 class m150212_182851_init_cms extends Migration
 {
     public function up()
@@ -14,17 +16,17 @@ class m150212_182851_init_cms extends Migration
         }
 
         $this->createTable('{{%Cms}}', [
-            'id' => Schema::TYPE_PK,
-            'url' => Schema::TYPE_STRING . '(255)',
-            'title' => Schema::TYPE_STRING . '(255)',
-            'content' => Schema::TYPE_TEXT,
-            'status' => Schema::TYPE_SMALLINT,
-            'commentAvailable' => 'TINYINT(1) DEFAULT 0',
-            'metaTitle' => Schema::TYPE_TEXT,
-            'metaDescription' => Schema::TYPE_TEXT,
-            'metaKeywords' => Schema::TYPE_TEXT,
-            'createdAt' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'updatedAt' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'id' => $this->primaryKey(),
+            'url' => $this->string()->notNull(),
+            'title' => $this->string()->notNull(),
+            'content' => $this->text()->notNull(),
+            'status' => $this->smallInteger()->notNull()->defaultValue(1),
+            'commentAvailable' => $this->smallInteger()->notNull()->defaultValue(0),
+            'metaTitle' => $this->text()->notNull(),
+            'metaDescription' => $this->text(),
+            'metaKeywords' => $this->text(),
+            'createdAt' => $this->integer()->notNull(),
+            'updatedAt' => $this->integer()->notNull()
         ], $tableOptions);
 
     }

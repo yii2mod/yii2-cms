@@ -80,7 +80,6 @@ class TestCase extends \PHPUnit_Framework_TestCase
         Yii::$app = null;
     }
 
-
     /**
      * @param array $config controller config.
      * @return Controller controller instance.
@@ -101,16 +100,16 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         $db->createCommand()->createTable('Cms', [
             'id' => 'pk',
-            'url' => 'string',
-            'title' => 'string',
-            'content' => 'text',
-            'status' => 'integer',
-            'commentAvailable' => 'integer',
-            'metaTitle' => 'text',
+            'url' => 'string not null',
+            'title' => 'string not null',
+            'content' => 'text not null',
+            'status' => 'smallint not null default 1',
+            'commentAvailable' => 'smallint not null default 0',
+            'metaTitle' => 'text not null',
             'metaDescription' => 'text',
             'metaKeywords' => 'text',
-            'createdAt' => 'integer',
-            'updatedAt' => 'integer',
+            'createdAt' => 'integer not null',
+            'updatedAt' => 'integer not null',
         ])->execute();
 
         // Data :
@@ -119,22 +118,22 @@ class TestCase extends \PHPUnit_Framework_TestCase
             'url' => 'about-us',
             'title' => 'about',
             'content' => 'test content',
-            'status' => 1,
-            'commentAvailable' => 0,
             'metaTitle' => 'test content',
             'metaDescription' => 'test content',
-            'metaKeywords' => 'test content'
+            'metaKeywords' => 'test content',
+            'createdAt' => time(),
+            'updatedAt' => time(),
         ])->execute();
 
         $db->createCommand()->insert('Cms', [
             'url' => 'some-url',
             'title' => 'some title',
             'content' => 'My site name is {siteName}',
-            'status' => 1,
-            'commentAvailable' => 0,
             'metaTitle' => 'test content',
             'metaDescription' => 'test content',
-            'metaKeywords' => 'test content'
+            'metaKeywords' => 'test content',
+            'createdAt' => time(),
+            'updatedAt' => time(),
         ])->execute();
     }
 }

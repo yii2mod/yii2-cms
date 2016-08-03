@@ -22,14 +22,16 @@ class CmsModelSearch extends CmsModel
     }
 
     /**
-     * Setup search function for filtering and sorting
+     * Creates data provider instance with search query applied
      *
      * @param $params
+     *
      * @return ActiveDataProvider
      */
     public function search($params)
     {
         $query = self::find();
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
@@ -41,13 +43,10 @@ class CmsModelSearch extends CmsModel
             'defaultOrder' => ['id' => SORT_DESC],
         ]);
 
-
-        // load the search form data and validate
         if (!($this->load($params))) {
             return $dataProvider;
         }
 
-        //adjust the query by adding the filters
         $query->andFilterWhere(['id' => $this->id]);
         $query->andFilterWhere(['status' => $this->status]);
         $query->andFilterWhere(['commentAvailable' => $this->commentAvailable]);

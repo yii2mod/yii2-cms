@@ -27,16 +27,14 @@ class PageUrlRule extends UrlRule
      * @param \yii\web\UrlManager $manager
      * @param \yii\web\Request $request
      *
-     * @return boolean
+     * @return array|bool
      */
     public function parseRequest($manager, $request)
     {
         $pathInfo = $request->getPathInfo();
-        // get path without '/' in end
         $url = preg_replace("#/$#", "", $pathInfo);
-        // find page by url in db
         $page = (new CmsModel())->findPage($url);
-        // redirect to page
+
         if (!empty($page)) {
             $params['pageAlias'] = $url;
             $params['pageId'] = $page->id;

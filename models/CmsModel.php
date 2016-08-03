@@ -5,6 +5,7 @@ namespace yii2mod\cms\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii2mod\cms\models\enumerables\CmsStatus;
+use yii2mod\enum\helpers\BooleanEnum;
 
 /**
  * Cms model
@@ -37,12 +38,16 @@ class CmsModel extends ActiveRecord
     public function rules()
     {
         return [
-            [['url', 'title', 'content', 'metaTitle'], 'required'],
-            [['url'], 'match', 'pattern' => '/^[a-z0-9\/-]+$/'],
+            [['title', 'content', 'url', 'metaTitle', 'metaDescription', 'metaKeywords'], 'trim'],
+            [['title', 'content', 'url', 'metaTitle'], 'required'],
+            ['url', 'match', 'pattern' => '/^[a-z0-9\/-]+$/'],
+            ['url', 'unique'],
             [['content', 'metaTitle', 'metaDescription', 'metaKeywords'], 'string'],
-            [['url'], 'unique'],
+            ['status', 'default', 'value' => CmsStatus::ENABLED],
+            ['status', 'in', 'range' => [CmsStatus::ENABLED, CmsStatus::DISABLED]],
+            ['commentAvailable', 'default', 'value' => BooleanEnum::NO],
             [['status', 'createdAt', 'updatedAt', 'commentAvailable'], 'integer'],
-            [['url', 'title'], 'string', 'max' => 255]
+            [['title', 'url'], 'string', 'max' => 255]
         ];
     }
 

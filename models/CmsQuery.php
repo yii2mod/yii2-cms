@@ -4,7 +4,6 @@ namespace yii2mod\cms\models;
 
 use yii\db\ActiveQuery;
 use yii2mod\cms\models\enumerables\CmsStatus;
-use yii2mod\settings\models\enumerables\SettingStatus;
 
 /**
  * Class CmsQuery

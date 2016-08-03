@@ -3,7 +3,6 @@
 namespace yii2mod\cms\tests;
 
 use Yii;
-use yii\web\NotFoundHttpException;
 use yii2mod\cms\actions\PageAction;
 
 /**
