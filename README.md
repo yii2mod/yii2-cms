@@ -112,7 +112,7 @@ return [
     * Create the widget and add the static function. For example:
    
      ```php
-       namespace app\widgets;
+      namespace app\widgets;
        
        use yii\base\Widget;
        
