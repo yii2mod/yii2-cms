@@ -109,7 +109,7 @@ return [
 ##Additional features:
 
 1. You can insert your own widget on the page by the following steps:
-    * Create the widget and add the static function. For example:
+    * Create the widget, for example:
    
      ```php
      <?php
