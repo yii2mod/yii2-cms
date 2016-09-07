@@ -112,16 +112,43 @@ return [
     * Create the widget and add the static function. For example:
    
      ```php
-       public static function insertList() {
-           return self::widget([
-               //your params
-           ]);
+       namespace app\widgets;
+       
+       use yii\base\Widget;
+       
+       /**
+        * Class MyWidget
+        * @package app\widgets
+        */
+       class MyWidget extends Widget
+       {
+           /**
+            * @inheritdoc
+            */
+           public function run()
+           {
+               parent::run();
+       
+               echo 'Text from widget';
+           }
+       
+           /**
+            * This function used for render the widget in the cms pages
+            *
+            * @return string
+            */
+           public static function show()
+           {
+               return self::widget([
+                   // additional params
+               ]);
+           }
        }
       ```
-    * When you create the page via admin panel add the following code to the content:
+    * When you create the page via admin panel add the following code to the page content:
     
       ```
-         \app\widgets\MyWidget:list() // call the function insertList placed in MyWidget class
+         [[\app\widgets\MyWidget:show]]
       ```
 2. You can use parameters in your page content, for example: {siteName}, {homeUrl}. For parsing this parameters you can use the `baseTemplateParams` property:
 
