@@ -29,7 +29,7 @@ class CmsModel extends ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%Cms}}';
+        return '{{%cms}}';
     }
 
     /**

@@ -98,7 +98,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         // Structure :
 
-        $db->createCommand()->createTable('Cms', [
+        $db->createCommand()->createTable('cms', [
             'id' => 'pk',
             'url' => 'string not null',
             'title' => 'string not null',
@@ -114,7 +114,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         // Data :
 
-        $db->createCommand()->insert('Cms', [
+        $db->createCommand()->insert('cms', [
             'url' => 'about-us',
             'title' => 'about',
             'content' => 'test content',
@@ -125,7 +125,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
             'updatedAt' => time(),
         ])->execute();
 
-        $db->createCommand()->insert('Cms', [
+        $db->createCommand()->insert('cms', [
             'url' => 'some-url',
             'title' => 'some title',
             'content' => 'My site name is {siteName}',
