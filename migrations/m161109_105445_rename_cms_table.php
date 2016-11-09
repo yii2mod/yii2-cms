@@ -1,6 +1,6 @@
 <?php
 
-use app\components\Migration;
+use yii\db\Migration;
 
 class m161109_105445_rename_cms_table extends Migration
 {
