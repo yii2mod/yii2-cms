@@ -36,24 +36,24 @@ $ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
 1) To use this extension first you need to configure the [comments extension](https://github.com/yii2mod/yii2-comments), after that you have to configure the main config in your application:
 ```php
 'modules' => [
-        'admin' => [
-            'controllerMap' => [
-                'cms' => 'yii2mod\cms\controllers\CmsController',
-                // Also you can override some controller properties in following way:
-                'cms' => [
-                    'class' => 'yii2mod\cms\controllers\CmsController',
-                    'searchClass' => [
-                        'class' => 'yii2mod\cms\models\search\CmsSearch',
-                        'pageSize' => 25
-                    ],
-                    'modelClass' => 'Your own cms model class',
-                    'indexView' => 'custom path to index view file',
-                    'createView' => 'custom path to create view file',
-                    'updateView' => 'custom path to update view file',
+    'admin' => [
+        'controllerMap' => [
+            'cms' => 'yii2mod\cms\controllers\CmsController',
+            // Also you can override some controller properties in following way:
+            'cms' => [
+                'class' => 'yii2mod\cms\controllers\CmsController',
+                'searchClass' => [
+                    'class' => 'yii2mod\cms\models\search\CmsSearch',
+                    'pageSize' => 25
                 ],
+                'modelClass' => 'Your own cms model class',
+                'indexView' => 'custom path to index view file',
+                'createView' => 'custom path to create view file',
+                'updateView' => 'custom path to update view file',
             ],
         ],
     ],
+],
 ```
 > **You can then access to management section through the following URL:**
 
