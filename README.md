@@ -64,35 +64,32 @@ $ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
  
 ```php
  'components' => [
-        'urlManager' => [
-            'rules' => [
-                ['class' => 'yii2mod\cms\components\PageUrlRule'],
-            ]
-        ],
-    ],
+     'urlManager' => [
+         'rules' => [
+             ['class' => 'yii2mod\cms\components\PageUrlRule'],
+         ]
+     ],
+ ],
 ```
 
 3) Add to SiteController (or configure via `$route` param in `urlManager`):
 ```php
-    /**
-     * @return array
-     */
-    public function actions()
-    {
-        return [
-            'page' => [
-                'class' => 'yii2mod\cms\actions\PageAction',
-                // Also you can override some action properties in following way:
-                'layout' => 'your custom layout',
-                'viewPath' => 'your custom view file',
-                // You can set parameters that you want to parse before the page is loaded, for example:
-                'baseTemplateParams' => [
-                   'homeUrl' => Yii::$app->homeUrl,
-                   'siteName' => Yii::$app->name
-                ]
+public function actions()
+{
+    return [
+        'page' => [
+            'class' => 'yii2mod\cms\actions\PageAction',
+            // Also you can override some action properties in following way:
+            'layout' => 'your custom layout',
+            'viewPath' => 'your custom view file',
+            // You can set parameters that you want to parse before the page is loaded, for example:
+            'baseTemplateParams' => [
+                'homeUrl' => Yii::$app->homeUrl,
+                'siteName' => Yii::$app->name
             ]
-        ];
-    }
+        ]
+    ];
+}
 ```
 > And now you can create your own pages via admin panel.
 
