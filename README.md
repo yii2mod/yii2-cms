@@ -29,11 +29,9 @@ to the require section of your composer.json.
 CONFIGURATION
 ------------
 > If you use this extension separate from the [base template](https://github.com/yii2mod/base), then you need execute migration by the following command:
+```bash
+$ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
 ```
-php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
-```
-
-> NOTE: comments extension used in 1.0.5 release and above, if you are using a previous version of this extension, you don't need to install [comments extension](https://github.com/yii2mod/yii2-comments).
 
 1) To use this extension first you need to configure the [comments extension](https://github.com/yii2mod/yii2-comments), after that you have to configure the main config in your application:
 ```php
@@ -41,7 +39,7 @@ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
         'admin' => [
             'controllerMap' => [
                 'cms' => 'yii2mod\cms\controllers\CmsController',
-                // Also you can override some controller properties. 
+                // Also you can override some controller properties in following way:
                 'cms' => [
                     'class' => 'yii2mod\cms\controllers\CmsController',
                     'searchClass' => [
@@ -84,13 +82,14 @@ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
         return [
             'page' => [
                 'class' => 'yii2mod\cms\actions\PageAction',
-                // You can set your template files
-                'layout' => '@app/modules/backend/views/layouts/main',
-                'viewPath' => '@app/modules/backend/views/cms/'
+                // Also you can override some action properties in following way:
+                'layout' => 'your custom layout',
+                'viewPath' => 'your custom view file'
+            ]
         ];
     }
 ```
-> And now you can create your own pages via the admin panel, and access them via the `url` of each page.
+> And now you can create your own pages via admin panel.
 
 ## Internationalization
 
