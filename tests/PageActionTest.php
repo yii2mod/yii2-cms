@@ -31,9 +31,11 @@ class PageActionTest extends TestCase
         $this->assertEquals('about-us', $response['params']['model']['url']);
     }
 
+    /**
+     * @expectedException \yii\web\NotFoundHttpException
+     */
     public function testViewNotExistPage()
     {
-        $this->setExpectedException('yii\web\NotFoundHttpException');
         $this->runAction(['pageId' => 'not exist page']);
     }
 

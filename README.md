@@ -40,10 +40,19 @@ php yii migrate --migrationPath=@vendor/yii2mod/yii2-cms/migrations
 'modules' => [
         'admin' => [
             'controllerMap' => [
-                'cms' => 'yii2mod\cms\controllers\CmsController'
-                // You can set your template files
-                'layout' => '@app/modules/backend/views/layouts/main',
-                'viewPath' => '@app/modules/backend/views/cms/'
+                'cms' => 'yii2mod\cms\controllers\CmsController',
+                // Also you can override some controller properties. 
+                'cms' => [
+                    'class' => 'yii2mod\cms\controllers\CmsController',
+                    'searchClass' => [
+                        'class' => 'yii2mod\cms\models\search\CmsSearch',
+                        'pageSize' => 25
+                    ],
+                    'modelClass' => 'Your own cms model class',
+                    'indexView' => 'custom path to index view file',
+                    'createView' => 'custom path to create view file',
+                    'updateView' => 'custom path to update view file',
+                ],
             ],
         ],
     ],

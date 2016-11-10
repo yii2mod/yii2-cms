@@ -99,6 +99,7 @@ class CmsModel extends ActiveRecord
      * Find page by url
      *
      * @param $url
+     *
      * @return array|null|ActiveRecord
      */
     public function findPage($url)
@@ -124,6 +125,7 @@ class CmsModel extends ActiveRecord
      * Replaces widget short code on appropriate widget
      *
      * @param $data
+     *
      * @return string
      */
     private function replace($data)

@@ -6,11 +6,16 @@ use yii\data\ActiveDataProvider;
 use yii2mod\cms\models\CmsModel;
 
 /**
- * Class CmsModelSearch
+ * Class CmsSearch
  * @package yii2mod\cms\models\search
  */
-class CmsModelSearch extends CmsModel
+class CmsSearch extends CmsModel
 {
+    /**
+     * @var int the default page size.
+     */
+    public $pageSize = 10;
+
     /**
      * @inheritdoc
      */
@@ -35,7 +40,7 @@ class CmsModelSearch extends CmsModel
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 10
+                'pageSize' => $this->pageSize
             ]
         ]);
 
