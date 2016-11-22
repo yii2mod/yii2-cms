@@ -2,8 +2,8 @@
 
 namespace yii2mod\cms\tests;
 
-use yii\helpers\ArrayHelper;
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii2mod\cms\tests\data\Controller;
 
 /**
@@ -28,6 +28,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     /**
      * Populates Yii::$app with a new application
      * The application will be destroyed on tearDown() automatically.
+     *
      * @param array $config The application configuration, if needed
      * @param string $appClass name of the application class to create
      */
@@ -45,18 +46,18 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 'urlManager' => [
                     'rules' => [
                         ['class' => 'yii2mod\cms\components\PageUrlRule'],
-                    ]
+                    ],
                 ],
                 'request' => [
                     'hostInfo' => 'http://domain.com',
-                    'scriptUrl' => '/index.php'
+                    'scriptUrl' => '/index.php',
                 ],
                 'i18n' => [
                     'translations' => [
                         '*' => [
                             'class' => 'yii\i18n\PhpMessageSource',
                             'basePath' => '@app/messages', // if advanced application, set @frontend/messages
-                            'sourceLanguage' => 'en'
+                            'sourceLanguage' => 'en',
                         ],
                     ],
                 ],
@@ -81,8 +82,9 @@ class TestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param array $config controller config.
-     * @return Controller controller instance.
+     * @param array $config controller config
+     *
+     * @return Controller controller instance
      */
     protected function createController($config = [])
     {

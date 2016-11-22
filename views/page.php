@@ -16,7 +16,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => $model->metaDescri
     <?php if ($model->commentAvailable): ?>
         <?php echo Comment::widget([
             'model' => $model,
-            'relatedTo' => 'cms page: ' . $model->url
+            'relatedTo' => 'cms page: ' . $model->url,
         ]); ?>
     <?php endif; ?>
 </div>

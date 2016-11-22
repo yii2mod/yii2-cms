@@ -7,6 +7,7 @@ use yii2mod\cms\models\enumerables\CmsStatus;
 
 /**
  * Class CmsQuery
+ *
  * @package yii2mod\cms\models
  */
 class CmsQuery extends ActiveQuery
@@ -21,6 +22,7 @@ class CmsQuery extends ActiveQuery
 
     /**
      * @param $url
+     *
      * @return $this
      */
     public function byUrl($url)

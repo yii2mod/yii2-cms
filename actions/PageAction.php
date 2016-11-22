@@ -10,6 +10,7 @@ use yii2mod\cms\models\CmsModel;
 
 /**
  * Class PageAction
+ *
  * @package yii2mod\cms\actions
  */
 class PageAction extends Action
@@ -39,6 +40,8 @@ class PageAction extends Action
      */
     public function init()
     {
+        parent::init();
+
         if (empty($this->pageId)) {
             $this->pageId = Yii::$app->request->get('pageId');
         }
@@ -46,14 +49,13 @@ class PageAction extends Action
         if (!empty($this->layout)) {
             $this->controller->layout = $this->layout;
         }
-
-        parent::init();
     }
 
     /**
      * Run action
      *
      * @throws \yii\web\NotFoundHttpException
+     *
      * @return string
      */
     public function run()
@@ -70,6 +72,7 @@ class PageAction extends Action
      * Parse base template params, like {homeUrl}
      *
      * @param $pageContent
+     *
      * @return string
      */
     protected function parseBaseTemplateParams($pageContent)
@@ -94,7 +97,7 @@ class PageAction extends Action
     {
         return ArrayHelper::merge($this->baseTemplateParams, [
             'homeUrl' => Yii::$app->urlManager->baseUrl,
-            'siteName' => Yii::$app->name
+            'siteName' => Yii::$app->name,
         ]);
     }
 
@@ -102,6 +105,7 @@ class PageAction extends Action
      * Find CmsModel
      *
      * @return null|CmsModel
+     *
      * @throws NotFoundHttpException
      */
     protected function findModel()

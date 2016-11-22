@@ -46,5 +46,5 @@ return [
     'Page has been created.' => 'Страница была сохранён.',
     'Page has been updated.' => 'Страница был обновлена.',
     'Page has been deleted.' => 'Страница был удалена.',
-    'The requested page does not exist.' => 'Ошибка 404 - страница не найдена!'
+    'The requested page does not exist.' => 'Ошибка 404 - страница не найдена!',
 ];

@@ -6,6 +6,7 @@ use yii2mod\enum\helpers\BaseEnum;
 
 /**
  * Class CmsStatus
+ *
  * @package yii2mod\cms\models\enumerables
  */
 class CmsStatus extends BaseEnum
@@ -23,6 +24,6 @@ class CmsStatus extends BaseEnum
      */
     public static $list = [
         self::ENABLED => 'Enabled',
-        self::DISABLED => 'Disabled'
+        self::DISABLED => 'Disabled',
     ];
 }

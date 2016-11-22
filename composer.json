@@ -18,12 +18,16 @@
         }
     ],
     "require": {
+        "php": ">=5.5",
         "yiisoft/yii2": "*",
         "yii2mod/yii2-enum": "*",
         "asofter/yii2-imperavi-redactor": "*",
         "yii2mod/yii2-editable": "*",
         "yii2mod/yii2-toggle-column": "*",
         "yii2mod/yii2-comments": "*"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "~1.7"
     },
     "autoload": {
         "psr-4": {

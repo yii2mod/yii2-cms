@@ -6,6 +6,7 @@ use yii2mod\cms\models\CmsModel;
 
 /**
  * Class CmsModelTest
+ *
  * @package yii2mod\cms\tests
  */
 class CmsModelTest extends TestCase

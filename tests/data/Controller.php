@@ -4,6 +4,7 @@ namespace yii2mod\cms\tests\data;
 
 /**
  * Class Controller
+ *
  * @package yii2mod\cms\tests\data
  */
 class Controller extends \yii\web\Controller

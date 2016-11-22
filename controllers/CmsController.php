@@ -3,15 +3,16 @@
 namespace yii2mod\cms\controllers;
 
 use Yii;
-use yii2mod\cms\models\CmsModel;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
+use yii2mod\cms\models\CmsModel;
 use yii2mod\editable\EditableAction;
 use yii2mod\toggle\actions\ToggleAction;
 
 /**
  * Class CmsController
+ *
  * @package yii2mod\cms\controllers
  */
 class CmsController extends Controller
@@ -48,14 +49,14 @@ class CmsController extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'index' => ['get'],
                     'create' => ['get', 'post'],
                     'update' => ['get', 'post'],
-                    'delete' => ['post']
+                    'delete' => ['post'],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -66,14 +67,14 @@ class CmsController extends Controller
     {
         return [
             'edit-page' => [
-                'class' => EditableAction::className(),
-                'modelClass' => CmsModel::className(),
-                'forceCreate' => false
+                'class' => EditableAction::class,
+                'modelClass' => CmsModel::class,
+                'forceCreate' => false,
             ],
             'toggle' => [
-                'class' => ToggleAction::className(),
-                'modelClass' => CmsModel::className(),
-            ]
+                'class' => ToggleAction::class,
+                'modelClass' => CmsModel::class,
+            ],
         ];
     }
 
@@ -89,7 +90,7 @@ class CmsController extends Controller
 
         return $this->render($this->indexView, [
             'dataProvider' => $dataProvider,
-            'searchModel' => $searchModel
+            'searchModel' => $searchModel,
         ]);
     }
 
@@ -106,11 +107,12 @@ class CmsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', Yii::t('yii2mod.cms', 'Page has been created.'));
+
             return $this->redirect(['index']);
         }
 
         return $this->render($this->createView, [
-            'model' => $model
+            'model' => $model,
         ]);
     }
 
@@ -119,7 +121,7 @@ class CmsController extends Controller
      *
      * If update is successful, the browser will be redirected to the 'index' page.
      *
-     * @param integer $id
+     * @param int $id
      *
      * @return mixed
      */
@@ -129,11 +131,12 @@ class CmsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', Yii::t('yii2mod.cms', 'Page has been updated.'));
+
             return $this->redirect(['index']);
         }
 
         return $this->render($this->updateView, [
-            'model' => $model
+            'model' => $model,
         ]);
     }
 
@@ -142,7 +145,7 @@ class CmsController extends Controller
      *
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
-     * @param integer $id
+     * @param int $id
      *
      * @return mixed
      */
@@ -150,6 +153,7 @@ class CmsController extends Controller
     {
         $this->findModel($id)->delete();
         Yii::$app->session->setFlash('success', Yii::t('yii2mod.cms', 'Page has been deleted.'));
+
         return $this->redirect(['index']);
     }
 
@@ -157,7 +161,7 @@ class CmsController extends Controller
      * Finds the CmsModel model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      *
-     * @param integer $id
+     * @param int $id
      *
      * @return CmsModel the loaded model
      *

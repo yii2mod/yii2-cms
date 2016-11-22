@@ -7,12 +7,13 @@ use yii2mod\cms\models\CmsModel;
 
 /**
  * Class CmsSearch
+ *
  * @package yii2mod\cms\models\search
  */
 class CmsSearch extends CmsModel
 {
     /**
-     * @var int the default page size.
+     * @var int the default page size
      */
     public $pageSize = 10;
 
@@ -40,8 +41,8 @@ class CmsSearch extends CmsModel
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => $this->pageSize
-            ]
+                'pageSize' => $this->pageSize,
+            ],
         ]);
 
         $dataProvider->setSort([

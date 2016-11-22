@@ -1,9 +1,9 @@
 <?php
 
+use \yii2mod\cms\models\enumerables\CmsStatus;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\imperavi\Widget;
-use \yii2mod\cms\models\enumerables\CmsStatus;
 
 /* @var $this yii\web\View */
 /* @var $model yii2mod\cms\models\CmsModel */

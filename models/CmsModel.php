@@ -10,17 +10,17 @@ use yii2mod\enum\helpers\BooleanEnum;
 /**
  * Cms model
  *
- * @property integer $id
+ * @property int $id
  * @property string $url
  * @property string $title
  * @property string $content
- * @property integer $status
- * @property integer $commentAvailable
+ * @property int $status
+ * @property int $commentAvailable
  * @property string $metaTitle
  * @property string $metaDescription
  * @property string $metaKeywords
- * @property integer $createdAt
- * @property integer $updatedAt
+ * @property int $createdAt
+ * @property int $updatedAt
  */
 class CmsModel extends ActiveRecord
 {
@@ -47,7 +47,7 @@ class CmsModel extends ActiveRecord
             ['status', 'in', 'range' => [CmsStatus::ENABLED, CmsStatus::DISABLED]],
             ['commentAvailable', 'default', 'value' => BooleanEnum::NO],
             [['status', 'createdAt', 'updatedAt', 'commentAvailable'], 'integer'],
-            [['title', 'url'], 'string', 'max' => 255]
+            [['title', 'url'], 'string', 'max' => 255],
         ];
     }
 
@@ -80,8 +80,8 @@ class CmsModel extends ActiveRecord
             'timestamp' => [
                 'class' => 'yii\behaviors\TimestampBehavior',
                 'createdAtAttribute' => 'createdAt',
-                'updatedAtAttribute' => 'updatedAt'
-            ]
+                'updatedAtAttribute' => 'updatedAt',
+            ],
         ];
     }
 

@@ -7,18 +7,22 @@ use yii2mod\cms\actions\PageAction;
 
 /**
  * Class PageActionTest
+ *
  * @package yii2mod\cms\tests
  */
 class PageActionTest extends TestCase
 {
     /**
      * Runs the action.
+     *
      * @param array $config
-     * @return array|\yii\web\Response response.
+     *
+     * @return array|\yii\web\Response response
      */
     protected function runAction(array $config = [])
     {
         $action = new PageAction('page', $this->createController(), $config);
+
         return $action->run();
     }
 
@@ -44,8 +48,8 @@ class PageActionTest extends TestCase
         $response = $this->runAction([
             'pageId' => 2,
             'baseTemplateParams' => [
-                'siteName' => Yii::$app->name
-            ]
+                'siteName' => Yii::$app->name,
+            ],
         ]);
         $this->assertEquals('My site name is My Application', $response['params']['model']['content']);
     }

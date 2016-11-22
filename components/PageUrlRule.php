@@ -7,12 +7,13 @@ use yii2mod\cms\models\CmsModel;
 
 /**
  * Class PageUrlRule
+ *
  * @package yii2mod\cms\components
  */
 class PageUrlRule extends UrlRule
 {
     /**
-     * @var string the pattern used to parse and create the path info part of a URL.
+     * @var string the pattern used to parse and create the path info part of a URL
      */
     public $pattern = '<\w+>';
 
@@ -32,12 +33,13 @@ class PageUrlRule extends UrlRule
     public function parseRequest($manager, $request)
     {
         $pathInfo = $request->getPathInfo();
-        $url = preg_replace("#/$#", "", $pathInfo);
+        $url = preg_replace('#/$#', '', $pathInfo);
         $page = (new CmsModel())->findPage($url);
 
         if (!empty($page)) {
             $params['pageAlias'] = $url;
             $params['pageId'] = $page->id;
+
             return [$this->route, $params];
         }
 

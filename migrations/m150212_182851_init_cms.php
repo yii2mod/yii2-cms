@@ -26,9 +26,8 @@ class m150212_182851_init_cms extends Migration
             'metaDescription' => $this->text(),
             'metaKeywords' => $this->text(),
             'createdAt' => $this->integer()->notNull(),
-            'updatedAt' => $this->integer()->notNull()
+            'updatedAt' => $this->integer()->notNull(),
         ], $tableOptions);
-
     }
 
     public function down()

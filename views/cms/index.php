@@ -10,7 +10,7 @@ use yii2mod\enum\helpers\BooleanEnum;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $searchModel \yii2mod\cms\models\search\CmsModelSearch */
+/* @var $searchModel \yii2mod\cms\models\search\CmsSearch */
 
 $this->title = Yii::t('yii2mod.cms', 'Cms Pages');
 $this->params['breadcrumbs'][] = $this->title;
@@ -30,12 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             'id',
             [
-                'class' => EditableColumn::className(),
+                'class' => EditableColumn::class,
                 'attribute' => 'url',
                 'url' => ['edit-page'],
             ],
             [
-                'class' => EditableColumn::className(),
+                'class' => EditableColumn::class,
                 'attribute' => 'title',
                 'url' => ['edit-page'],
             ],
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'createdAt',
-                'format' => ['date', 'full']
+                'format' => ['date', 'full'],
             ],
             [
                 'header' => Yii::t('yii2mod.cms', 'Actions'),
@@ -61,11 +61,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{view}{update}{delete}',
                 'buttons' => [
                     'view' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', Url::to($model->url, true),
-                            ['title' => Yii::t('yii2mod.cms', 'View'), 'data-pjax' => 0, 'target' => '_blank']);
-                    }
+                        return Html::a(
+                            '<span class="glyphicon glyphicon-eye-open"></span>',
+                            Url::to($model->url, true),
+                            [
+                                'title' => Yii::t('yii2mod.cms', 'View'),
+                                'data-pjax' => 0,
+                                'target' => '_blank',
+                            ]
+                        );
+                    },
                 ],
-            ]
+            ],
         ],
     ]);
     ?>
