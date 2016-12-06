@@ -86,6 +86,15 @@ public function actions()
             'baseTemplateParams' => [
                 'homeUrl' => Yii::$app->homeUrl,
                 'siteName' => Yii::$app->name
+            ],
+            // some comment widget params
+            'commentWidgetParams' => [
+                'maxLevel' => 1,
+                'dataProviderConfig' => [
+                    'pagination' => [
+                        'pageSize' => 5
+                    ],
+                ],
             ]
         ]
     ];

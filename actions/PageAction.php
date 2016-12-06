@@ -36,6 +36,11 @@ class PageAction extends Action
     public $baseTemplateParams = [];
 
     /**
+     * @var array
+     */
+    public $commentWidgetParams = [];
+
+    /**
      * Initializes the object.
      */
     public function init()
@@ -65,6 +70,7 @@ class PageAction extends Action
 
         return $this->controller->render($this->view, [
             'model' => $model,
+            'commentWidgetParams' => $this->commentWidgetParams,
         ]);
     }
 
