@@ -59,7 +59,9 @@ To access the module, you need to configure the modules array in your applicatio
 > http://localhost/path/to/index.php?r=/cms/manage/index
   
 
-2) Add new Rule class to the `urlManager` array in your application configuration by the following code:
+**Configure UrlManager**
+
+You need to configure the `urlManager` array in your application configuration:
  
 ```php
  'components' => [
@@ -71,7 +73,10 @@ To access the module, you need to configure the modules array in your applicatio
  ],
 ```
 
-3) Add to SiteController (or configure via `$route` param in `urlManager`):
+**Setup Page Action**
+
+Add to SiteController (or configure via `$route` param in `urlManager`):
+
 ```php
 public function actions()
 {
@@ -82,7 +87,7 @@ public function actions()
     ];
 }
 ```
-> And now you can create your own pages via admin panel.
+**And now you can create your own pages via admin panel.**
 
 ## Features:
 
