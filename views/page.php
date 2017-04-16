@@ -7,22 +7,26 @@
 use yii\helpers\ArrayHelper;
 use yii2mod\comments\widgets\Comment;
 
-$this->params['bodyClass'] = $model->url;
-$this->title = $model->metaTitle;
-$this->registerMetaTag(['name' => 'keywords', 'content' => $model->metaKeywords]);
-$this->registerMetaTag(['name' => 'description', 'content' => $model->metaDescription]);
+$this->title = $model->meta_title;
+$this->registerMetaTag(['name' => 'keywords', 'content' => $model->meta_keywords]);
+$this->registerMetaTag(['name' => 'description', 'content' => $model->meta_description]);
 ?>
-<div class="static-page">
-    <h1><?php echo $model->title; ?></h1>
-    <?php echo $model->getContent(); ?>
-    <?php if ($model->commentAvailable): ?>
-        <?php echo Comment::widget(ArrayHelper::merge(
-            [
-                'model' => $model,
-                'relatedTo' => 'cms page: ' . $model->url,
-            ],
-            $commentWidgetParams
-        )); ?>
-
+<div class="page-wrapper">
+    <h1 class="page-title">
+        <?php echo $model->title; ?>
+    </h1>
+    <div class="page-content">
+        <?php echo $model->getContent(); ?>
+    </div>
+    <?php if ($model->comment_available): ?>
+        <div class="page-comments">
+            <?php echo Comment::widget(ArrayHelper::merge(
+                [
+                    'model' => $model,
+                    'relatedTo' => 'cms page: ' . $model->url,
+                ],
+                $commentWidgetParams
+            )); ?>
+        </div>
     <?php endif; ?>
 </div>

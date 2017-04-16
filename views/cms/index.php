@@ -17,11 +17,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cms-model-index">
 
-    <h1><?php echo Html::encode($this->title) ?></h1>
+    <h1><?php echo Html::encode($this->title); ?></h1>
 
     <p>
         <?php echo Html::a(Yii::t('yii2mod.cms', 'Create Page'), ['create'], ['class' => 'btn btn-success']); ?>
-        <?php echo Html::a(Yii::t('yii2mod.cms', 'View Comments'), ['/admin/comments/index'], ['class' => 'btn btn-success']); ?>
+        <?php echo Html::a(Yii::t('yii2mod.cms', 'View Comments'), ['/comment/manage/index'], ['class' => 'btn btn-success']); ?>
     </p>
     <?php Pjax::begin(['timeout' => 5000]); ?>
     <?php echo GridView::widget([
@@ -40,19 +40,41 @@ $this->params['breadcrumbs'][] = $this->title;
                 'url' => ['edit-page'],
             ],
             [
-                'class' => '\yii2mod\toggle\ToggleColumn',
+                'class' => EditableColumn::class,
                 'attribute' => 'status',
+                'url' => ['edit-page'],
+                'value' => function ($model) {
+                    return CmsStatus::getLabel($model->status);
+                },
+                'type' => 'select',
+                'editableOptions' => function ($model) {
+                    return [
+                        'source' => CmsStatus::listData(),
+                        'value' => $model->status,
+                    ];
+                },
                 'filter' => CmsStatus::listData(),
                 'filterInputOptions' => ['prompt' => Yii::t('yii2mod.cms', 'Select Status'), 'class' => 'form-control'],
             ],
             [
-                'class' => '\yii2mod\toggle\ToggleColumn',
-                'attribute' => 'commentAvailable',
+                'class' => EditableColumn::class,
+                'attribute' => 'comment_available',
+                'url' => ['edit-page'],
+                'value' => function ($model) {
+                    return BooleanEnum::getLabel($model->comment_available);
+                },
+                'type' => 'select',
+                'editableOptions' => function ($model) {
+                    return [
+                        'source' => BooleanEnum::listData(),
+                        'value' => $model->comment_available,
+                    ];
+                },
                 'filter' => BooleanEnum::listData(),
                 'filterInputOptions' => ['prompt' => Yii::t('yii2mod.cms', 'Select'), 'class' => 'form-control'],
             ],
             [
-                'attribute' => 'createdAt',
+                'attribute' => 'created_at',
                 'format' => ['date', 'full'],
             ],
             [

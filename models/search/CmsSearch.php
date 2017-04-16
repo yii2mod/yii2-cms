@@ -23,7 +23,8 @@ class CmsSearch extends CmsModel
     public function rules()
     {
         return [
-            [['id', 'url', 'title', 'status', 'commentAvailable'], 'safe'],
+            [['id', 'status', 'comment_available'], 'integer'],
+            [['url', 'title'], 'string'],
         ];
     }
 
@@ -34,9 +35,9 @@ class CmsSearch extends CmsModel
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search(array $params)
     {
-        $query = self::find();
+        $query = CmsModel::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -49,13 +50,15 @@ class CmsSearch extends CmsModel
             'defaultOrder' => ['id' => SORT_DESC],
         ]);
 
-        if (!($this->load($params))) {
+        $this->load($params);
+
+        if (!$this->validate()) {
             return $dataProvider;
         }
 
         $query->andFilterWhere(['id' => $this->id]);
         $query->andFilterWhere(['status' => $this->status]);
-        $query->andFilterWhere(['commentAvailable' => $this->commentAvailable]);
+        $query->andFilterWhere(['comment_available' => $this->comment_available]);
         $query->andFilterWhere(['like', 'url', $this->url]);
         $query->andFilterWhere(['like', 'title', $this->title]);
 

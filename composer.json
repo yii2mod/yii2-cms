@@ -4,7 +4,8 @@
     "type": "yii2-extension",
     "keywords": [
         "yii2",
-        "extension"
+        "yii2-cms",
+        "yii2-cms-module"
     ],
     "license": "MIT",
     "authors": [
@@ -18,13 +19,14 @@
         }
     ],
     "require": {
-        "php": ">=5.5",
-        "yiisoft/yii2": "*",
+        "php": ">=5.6",
+        "yiisoft/yii2": "~2.0.11",
         "yii2mod/yii2-enum": "*",
-        "asofter/yii2-imperavi-redactor": "*",
         "yii2mod/yii2-editable": "*",
-        "yii2mod/yii2-toggle-column": "*",
-        "yii2mod/yii2-comments": "*"
+        "yii2mod/yii2-comments": "*",
+        "yii2mod/yii2-markdown": "*",
+        "asofter/yii2-imperavi-redactor": "*",
+        "cebe/markdown": "~1.1.1"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "~2.0"
@@ -33,5 +35,8 @@
         "psr-4": {
             "yii2mod\\cms\\": ""
         }
+    },
+    "extra": {
+        "bootstrap": "yii2mod\\cms\\Bootstrap"
     }
 }

@@ -2,7 +2,9 @@
 
 namespace yii2mod\cms\models;
 
+use cebe\markdown\GithubMarkdown;
 use Yii;
+use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii2mod\cms\models\enumerables\CmsStatus;
 use yii2mod\enum\helpers\BooleanEnum;
@@ -14,13 +16,14 @@ use yii2mod\enum\helpers\BooleanEnum;
  * @property string $url
  * @property string $title
  * @property string $content
+ * @property string $markdown_content
  * @property int $status
- * @property int $commentAvailable
- * @property string $metaTitle
- * @property string $metaDescription
- * @property string $metaKeywords
- * @property int $createdAt
- * @property int $updatedAt
+ * @property int $comment_available
+ * @property string $meta_title
+ * @property string $meta_description
+ * @property string $meta_keywords
+ * @property int $created_at
+ * @property int $updated_at
  */
 class CmsModel extends ActiveRecord
 {
@@ -38,15 +41,18 @@ class CmsModel extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content', 'url', 'metaTitle', 'metaDescription', 'metaKeywords'], 'trim'],
-            [['title', 'content', 'url', 'metaTitle'], 'required'],
+            [['title', 'content', 'markdown_content', 'url', 'meta_title', 'meta_description', 'meta_keywords'], 'trim'],
+            [['title', 'content', 'url', 'meta_title'], 'required'],
+            ['markdown_content', 'required', 'when' => function () {
+                return Yii::$app->getModule('cms')->enableMarkdown;
+            }],
             ['url', 'match', 'pattern' => '/^[a-z0-9\/-]+$/'],
             ['url', 'unique'],
-            [['content', 'metaTitle', 'metaDescription', 'metaKeywords'], 'string'],
+            [['content', 'markdown_content', 'meta_title', 'meta_description', 'meta_keywords'], 'string'],
             ['status', 'default', 'value' => CmsStatus::ENABLED],
-            ['status', 'in', 'range' => [CmsStatus::ENABLED, CmsStatus::DISABLED]],
-            ['commentAvailable', 'default', 'value' => BooleanEnum::NO],
-            [['status', 'createdAt', 'updatedAt', 'commentAvailable'], 'integer'],
+            ['status', 'in', 'range' => CmsStatus::getConstantsByName()],
+            ['comment_available', 'boolean'],
+            ['comment_available', 'default', 'value' => BooleanEnum::NO],
             [['title', 'url'], 'string', 'max' => 255],
         ];
     }
@@ -61,13 +67,14 @@ class CmsModel extends ActiveRecord
             'url' => Yii::t('yii2mod.cms', 'Url'),
             'title' => Yii::t('yii2mod.cms', 'Title'),
             'content' => Yii::t('yii2mod.cms', 'Content'),
+            'markdown_content' => Yii::t('yii2mod.cms', 'Markdown Content'),
             'status' => Yii::t('yii2mod.cms', 'Status'),
-            'metaTitle' => Yii::t('yii2mod.cms', 'Meta Title'),
-            'metaDescription' => Yii::t('yii2mod.cms', 'Meta Description'),
-            'metaKeywords' => Yii::t('yii2mod.cms', 'Meta Keywords'),
-            'commentAvailable' => Yii::t('yii2mod.cms', 'Comments available'),
-            'createdAt' => Yii::t('yii2mod.cms', 'Date Created'),
-            'updatedAt' => Yii::t('yii2mod.cms', 'Date Updated'),
+            'meta_title' => Yii::t('yii2mod.cms', 'Meta Title'),
+            'meta_description' => Yii::t('yii2mod.cms', 'Meta Description'),
+            'meta_keywords' => Yii::t('yii2mod.cms', 'Meta Keywords'),
+            'comment_available' => Yii::t('yii2mod.cms', 'Comments available'),
+            'created_at' => Yii::t('yii2mod.cms', 'Date Created'),
+            'updated_at' => Yii::t('yii2mod.cms', 'Date Updated'),
         ];
     }
 
@@ -77,22 +84,32 @@ class CmsModel extends ActiveRecord
     public function behaviors()
     {
         return [
-            'timestamp' => [
-                'class' => 'yii\behaviors\TimestampBehavior',
-                'createdAtAttribute' => 'createdAt',
-                'updatedAtAttribute' => 'updatedAt',
-            ],
+            TimestampBehavior::class,
         ];
     }
 
     /**
-     * Creates an [[ActiveQueryInterface]] instance for query purpose.
-     *
      * @return CmsQuery
      */
     public static function find()
     {
         return new CmsQuery(get_called_class());
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeValidate()
+    {
+        if (parent::beforeDelete()) {
+            if (Yii::$app->getModule('cms')->enableMarkdown) {
+                $this->content = (new GithubMarkdown())->parse($this->markdown_content);
+            }
+
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
