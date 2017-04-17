@@ -8,14 +8,14 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii2mod\cms\models\CmsModel;
 use yii2mod\editable\EditableAction;
-use yii2mod\toggle\actions\ToggleAction;
+use yii2mod\rbac\filters\AccessControl;
 
 /**
- * Class CmsController
+ * Class ManageController
  *
  * @package yii2mod\cms\controllers
  */
-class CmsController extends Controller
+class ManageController extends Controller
 {
     /**
      * @var string path to index view file, which is used in admin panel
@@ -57,6 +57,15 @@ class CmsController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -68,11 +77,6 @@ class CmsController extends Controller
         return [
             'edit-page' => [
                 'class' => EditableAction::class,
-                'modelClass' => CmsModel::class,
-                'forceCreate' => false,
-            ],
-            'toggle' => [
-                'class' => ToggleAction::class,
                 'modelClass' => CmsModel::class,
             ],
         ];

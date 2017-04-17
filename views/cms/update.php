@@ -11,10 +11,10 @@ $this->params['breadcrumbs'][] = Yii::t('yii2mod.cms', 'Update');
 ?>
 <div class="cms-model-update">
 
-    <h1><?php echo Html::encode($this->title) ?></h1>
+    <h1><?php echo Html::encode($this->title); ?></h1>
 
     <?php echo $this->render('_form', [
         'model' => $model,
-    ]) ?>
+    ]); ?>
 
 </div>

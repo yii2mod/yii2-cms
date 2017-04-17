@@ -9,7 +9,7 @@ use yii2mod\cms\tests\data\Controller;
 /**
  * This is the base class for all yii framework unit tests.
  */
-class TestCase extends \PHPUnit_Framework_TestCase
+class TestCase extends \PHPUnit\Framework\TestCase
 {
     protected function setUp()
     {
@@ -106,12 +106,12 @@ class TestCase extends \PHPUnit_Framework_TestCase
             'title' => 'string not null',
             'content' => 'text not null',
             'status' => 'smallint not null default 1',
-            'commentAvailable' => 'smallint not null default 0',
-            'metaTitle' => 'text not null',
-            'metaDescription' => 'text',
-            'metaKeywords' => 'text',
-            'createdAt' => 'integer not null',
-            'updatedAt' => 'integer not null',
+            'comment_available' => 'smallint not null default 0',
+            'meta_title' => 'text not null',
+            'meta_description' => 'text',
+            'meta_keywords' => 'text',
+            'created_at' => 'integer not null',
+            'updated_at' => 'integer not null',
         ])->execute();
 
         // Data :
@@ -120,22 +120,22 @@ class TestCase extends \PHPUnit_Framework_TestCase
             'url' => 'about-us',
             'title' => 'about',
             'content' => 'test content',
-            'metaTitle' => 'test content',
-            'metaDescription' => 'test content',
-            'metaKeywords' => 'test content',
-            'createdAt' => time(),
-            'updatedAt' => time(),
+            'meta_title' => 'test content',
+            'meta_description' => 'test content',
+            'meta_keywords' => 'test content',
+            'created_at' => time(),
+            'updated_at' => time(),
         ])->execute();
 
         $db->createCommand()->insert('cms', [
             'url' => 'some-url',
             'title' => 'some title',
             'content' => 'My site name is {siteName}',
-            'metaTitle' => 'test content',
-            'metaDescription' => 'test content',
-            'metaKeywords' => 'test content',
-            'createdAt' => time(),
-            'updatedAt' => time(),
+            'meta_title' => 'test content',
+            'meta_description' => 'test content',
+            'meta_keywords' => 'test content',
+            'created_at' => time(),
+            'updated_at' => time(),
         ])->execute();
     }
 }

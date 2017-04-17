@@ -21,6 +21,7 @@ return [
     'Url' => 'Url',
     'Title' => 'Title',
     'Content' => 'Content',
+    'Markdown Content' => 'Markdown Content',
     'Status' => 'Status',
     'Meta Title' => 'Meta Title',
     'Meta Description' => 'Meta Description',
