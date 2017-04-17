@@ -59,7 +59,7 @@ To access the module, you need to configure the modules array in your applicatio
 > http://localhost/path/to/index.php?r=/cms/manage/index
   
 
-**Configure UrlManager**
+**Configure Url Manager**
 
 You need to configure the `urlManager` array in your application configuration:
  
@@ -160,3 +160,26 @@ public function actions()
     ];
 }
 ```
+
+4. You can change comments module settings by the following code:
+
+```php
+public function actions()
+{
+    return [
+        'page' => [
+            'class' => 'yii2mod\cms\actions\PageAction',
+            'commentWidgetParams' => [
+                'maxLevel' => 1,
+                'dataProviderConfig' => [
+                    'pagination' => [
+                        'pageSize' => 10
+                    ],
+                ],
+            ]
+        ]
+    ];
+}
+```
+
+> For detail information about comments module please view the following [page](https://github.com/yii2mod/yii2-comments)
