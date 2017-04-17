@@ -7,8 +7,10 @@ This module provides a web interface for content management system and includes 
 - [Support Comments Management System](https://github.com/yii2mod/yii2-comments)
 - Integrated with [yii2mod/base](https://github.com/yii2mod/base)
 
-[![Latest Stable Version](https://poser.pugx.org/yii2mod/yii2-cms/v/stable)](https://packagist.org/packages/yii2mod/yii2-cms) [![Total Downloads](https://poser.pugx.org/yii2mod/yii2-cms/downloads)](https://packagist.org/packages/yii2mod/yii2-cms) [![License](https://poser.pugx.org/yii2mod/yii2-cms/license)](https://packagist.org/packages/yii2mod/yii2-cms)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yii2mod/yii2-cms/?branch=master) [![Build Status](https://travis-ci.org/yii2mod/yii2-cms.svg?branch=master)](https://travis-ci.org/yii2mod/yii2-cms)
+[![Latest Stable Version](https://poser.pugx.org/yii2mod/yii2-cms/v/stable)](https://packagist.org/packages/yii2mod/yii2-cms) 
+[![Total Downloads](https://poser.pugx.org/yii2mod/yii2-cms/downloads)](https://packagist.org/packages/yii2mod/yii2-cms) 
+[![License](https://poser.pugx.org/yii2mod/yii2-cms/license)](https://packagist.org/packages/yii2mod/yii2-cms)
+[![Build Status](https://travis-ci.org/yii2mod/yii2-cms.svg?branch=master)](https://travis-ci.org/yii2mod/yii2-cms)
 
 
 Installation
