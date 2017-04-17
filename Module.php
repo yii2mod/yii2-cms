@@ -36,6 +36,8 @@ class Module extends \yii\base\Module
 
     /**
      * @var array markdown editor options
+     *
+     * @see https://github.com/NextStepWebs/simplemde-markdown-editor#configuration
      */
     public $markdownEditorOptions = [
         'showIcons' => ['code', 'table'],

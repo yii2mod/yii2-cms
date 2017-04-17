@@ -87,7 +87,7 @@ public function actions()
     ];
 }
 ```
-**And now you can create your own pages via admin panel.**
+**Now you can use this module with all available features.**
 
 ## Features:
 
@@ -182,4 +182,4 @@ public function actions()
 }
 ```
 
-> For detail information about comments module please view the following [page](https://github.com/yii2mod/yii2-comments)
+> For detail information about comments module please visit the following [page](https://github.com/yii2mod/yii2-comments)
