@@ -1,0 +1,61 @@
+<?php
+
+namespace yii2mod\cms\models;
+
+use Yii;
+use yii\db\ActiveRecord;
+use yii2tech\ar\file\FileBehavior;
+
+/**
+ * This is the model class for table "{{%attachment}}".
+ *
+ * @property int $id
+ * @property string $file_extension
+ * @property int $file_version
+ */
+class AttachmentModel extends ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%attachment}}';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['file_version'], 'integer'],
+            [['file_extension'], 'string', 'max' => 255],
+            ['file', 'file', 'skipOnEmpty' => false],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('yii2mod.cms', 'ID'),
+            'file_extension' => Yii::t('yii2mod.cms', 'File Extension'),
+            'file_version' => Yii::t('yii2mod.cms', 'File Version'),
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            'file' => [
+                'class' => FileBehavior::class,
+                'fileStorageBucket' => 'attachment',
+                'fileExtensionAttribute' => 'file_extension',
+                'fileVersionAttribute' => 'file_version',
+            ],
+        ];
+    }
+}

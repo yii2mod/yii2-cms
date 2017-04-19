@@ -2,8 +2,8 @@
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
-use yii\imperavi\Widget;
 use yii2mod\cms\models\enumerables\CmsStatus;
+use yii2mod\cms\Widget;
 use yii2mod\markdown\MarkdownEditor;
 
 /* @var $this yii\web\View */

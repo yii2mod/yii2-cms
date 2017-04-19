@@ -26,6 +26,8 @@ class Module extends \yii\base\Module
         'plugins' => ['video', 'fullscreen', 'table'],
         'options' => [
             'minHeight' => 200,
+            'imageUpload' => '/cms/manage/file-upload',
+            'fileUpload' => '/cms/manage/file-upload',
         ],
     ];
 

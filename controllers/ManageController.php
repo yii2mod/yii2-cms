@@ -6,6 +6,7 @@ use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 use yii2mod\cms\models\CmsModel;
 use yii2mod\editable\EditableAction;
 use yii2mod\rbac\filters\AccessControl;
@@ -43,6 +44,11 @@ class ManageController extends Controller
     public $modelClass = 'yii2mod\cms\models\CmsModel';
 
     /**
+     * @var string model class name for attachment model
+     */
+    public $attachmentModelClass = 'yii2mod\cms\models\AttachmentModel';
+
+    /**
      * @inheritdoc
      */
     public function behaviors()
@@ -55,6 +61,7 @@ class ManageController extends Controller
                     'create' => ['get', 'post'],
                     'update' => ['get', 'post'],
                     'delete' => ['post'],
+                    'image-upload' => ['post'],
                 ],
             ],
             'access' => [
@@ -159,6 +166,28 @@ class ManageController extends Controller
         Yii::$app->session->setFlash('success', Yii::t('yii2mod.cms', 'Page has been deleted.'));
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * @return \yii\web\Response
+     */
+    public function actionFileUpload()
+    {
+        $model = Yii::createObject($this->attachmentModelClass);
+        $model->file = UploadedFile::getInstanceByName('file');
+
+        if ($model->save()) {
+            $result = [
+                'filelink' => $model->getFileUrl(),
+                'filename' => $model->getFileSelfName(),
+            ];
+        } else {
+            $result = [
+                'error' => $model->getFirstError('file'),
+            ];
+        }
+
+        return $this->asJson($result);
     }
 
     /**

@@ -26,5 +26,19 @@ class Bootstrap implements BootstrapInterface
         if ($app->getModule('comment') === null) {
             $app->setModule('comment', ['class' => 'yii2mod\comments\Module']);
         }
+
+        if (!$app->has('fileStorage')) {
+            $app->set('fileStorage', [
+                'class' => 'yii2tech\filestorage\local\Storage',
+                'basePath' => '@webroot/files',
+                'baseUrl' => '@web/files',
+                'filePermission' => 0777,
+                'buckets' => [
+                    'item' => [
+                        'baseSubPath' => 'attachment',
+                    ],
+                ],
+            ]);
+        }
     }
 }

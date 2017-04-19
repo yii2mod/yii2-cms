@@ -26,7 +26,8 @@
         "yii2mod/yii2-comments": "*",
         "yii2mod/yii2-markdown": "*",
         "asofter/yii2-imperavi-redactor": "*",
-        "cebe/markdown": "~1.1.1"
+        "cebe/markdown": "~1.1.1",
+        "yii2tech/ar-file": "*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "~2.0"
