@@ -61,7 +61,7 @@ class ManageController extends Controller
                     'create' => ['get', 'post'],
                     'update' => ['get', 'post'],
                     'delete' => ['post'],
-                    'image-upload' => ['post'],
+                    'file-upload' => ['post'],
                 ],
             ],
             'access' => [
