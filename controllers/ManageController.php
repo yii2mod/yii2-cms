@@ -3,12 +3,12 @@
 namespace yii2mod\cms\controllers;
 
 use Yii;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii2mod\cms\models\CmsModel;
 use yii2mod\editable\EditableAction;
-use yii2mod\rbac\filters\AccessControl;
 
 /**
  * Class ManageController
