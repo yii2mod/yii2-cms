@@ -9,7 +9,6 @@ use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 use yii2mod\cms\models\CmsModel;
 use yii2mod\editable\EditableAction;
-use yii2mod\rbac\filters\AccessControl;
 
 /**
  * Class ManageController
@@ -47,6 +46,21 @@ class ManageController extends Controller
      * @var string model class name for attachment model
      */
     public $attachmentModelClass = 'yii2mod\cms\models\AttachmentModel';
+    
+    /**
+     *
+     * @var array access control config
+     */
+    public $accessControlConfig = [
+        'class' => 'yii\filters\AccessControl',
+        'rules' => [
+            [
+                'allow' => true,
+                'roles' => ['admin'],
+            ],
+        ],
+    ];
+
 
     /**
      * @inheritdoc
@@ -64,15 +78,7 @@ class ManageController extends Controller
                     'file-upload' => ['post'],
                 ],
             ],
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['admin'],
-                    ],
-                ],
-            ],
+            'access' => $this->accessControlConfig,
         ];
     }
 
