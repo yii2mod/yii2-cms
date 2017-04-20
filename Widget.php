@@ -21,7 +21,7 @@ class Widget extends \yii\imperavi\Widget
 
         $request = Yii::$app->getRequest();
 
-        if ($request->enableCsrfValidation) {
+        if ($request->enableCsrfValidation && isset($this->options['imageUpload'])) {
             $this->options['uploadImageFields'][$request->csrfParam] = $request->getCsrfToken();
             $this->options['uploadFileFields'][$request->csrfParam] = $request->getCsrfToken();
         }

@@ -47,6 +47,9 @@ class AttachmentModel extends ActiveRecord
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return [

@@ -3,7 +3,6 @@
 namespace yii2mod\cms\controllers;
 
 use Yii;
-use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
@@ -43,12 +42,25 @@ class ManageController extends Controller
     public $modelClass = 'yii2mod\cms\models\CmsModel';
 
     /**
-     * @var string model class name for attachment model
+     * @var string class name for attachment model
      */
     public $attachmentModelClass = 'yii2mod\cms\models\AttachmentModel';
-    
+
     /**
-     *
+     * @var array verb filter config
+     */
+    public $verbFilterConfig = [
+        'class' => 'yii\filters\VerbFilter',
+        'actions' => [
+            'index' => ['get'],
+            'create' => ['get', 'post'],
+            'update' => ['get', 'post'],
+            'delete' => ['post'],
+            'file-upload' => ['post'],
+        ],
+    ];
+
+    /**
      * @var array access control config
      */
     public $accessControlConfig = [
@@ -61,23 +73,13 @@ class ManageController extends Controller
         ],
     ];
 
-
     /**
      * @inheritdoc
      */
     public function behaviors()
     {
         return [
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'index' => ['get'],
-                    'create' => ['get', 'post'],
-                    'update' => ['get', 'post'],
-                    'delete' => ['post'],
-                    'file-upload' => ['post'],
-                ],
-            ],
+            'verbs' => $this->verbFilterConfig,
             'access' => $this->accessControlConfig,
         ];
     }
@@ -96,7 +98,7 @@ class ManageController extends Controller
     }
 
     /**
-     * Lists all CmsModel models.
+     * List of all cms models.
      *
      * @return mixed
      */
@@ -112,7 +114,7 @@ class ManageController extends Controller
     }
 
     /**
-     * Creates a new CmsModel model.
+     * Creates a new CmsModel.
      *
      * If creation is successful, the browser will be redirected to the 'index' page.
      *
@@ -134,7 +136,7 @@ class ManageController extends Controller
     }
 
     /**
-     * Updates an existing CmsModel model.
+     * Updates an existing CmsModel.
      *
      * If update is successful, the browser will be redirected to the 'index' page.
      *
@@ -158,7 +160,7 @@ class ManageController extends Controller
     }
 
     /**
-     * Deletes an existing CmsModel model.
+     * Deletes an existing CmsModel.
      *
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
@@ -197,7 +199,7 @@ class ManageController extends Controller
     }
 
     /**
-     * Finds the CmsModel model based on its primary key value.
+     * Finds the CmsModel based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      *
      * @param int $id
