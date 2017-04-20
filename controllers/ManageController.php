@@ -3,7 +3,6 @@
 namespace yii2mod\cms\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -43,6 +42,19 @@ class ManageController extends Controller
     public $modelClass = 'yii2mod\cms\models\CmsModel';
 
     /**
+     * @var array access control config
+     */
+    public $accessControlConfig = [
+        'class' => 'yii\filters\AccessControl',
+        'rules' => [
+            [
+                'allow' => true,
+                'roles' => ['admin'],
+            ],
+        ],
+    ];
+
+    /**
      * @inheritdoc
      */
     public function behaviors()
@@ -57,15 +69,7 @@ class ManageController extends Controller
                     'delete' => ['post'],
                 ],
             ],
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['admin'],
-                    ],
-                ],
-            ],
+            'access' => $this->accessControlConfig,
         ];
     }
 
