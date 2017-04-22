@@ -4,6 +4,7 @@ This module provides a web interface for content management system and includes 
 
 - Allows CRUD operations for pages
 - [Support Markdown Editor](https://github.com/yii2mod/yii2-markdown)
+- [Support Froala Editor](https://www.froala.com/wysiwyg-editor)
 - [Support Comments Management System](https://github.com/yii2mod/yii2-comments)
 - Integrated with [yii2mod/base](https://github.com/yii2mod/base)
 

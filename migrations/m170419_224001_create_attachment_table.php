@@ -4,9 +4,6 @@ use yii\db\Migration;
 
 /**
  * Handles the creation of table `attachment`.
- * Has foreign keys to the tables:
- *
- * - `cms`
  */
 class m170419_224001_create_attachment_table extends Migration
 {

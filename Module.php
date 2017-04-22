@@ -20,14 +20,20 @@ class Module extends \yii\base\Module
     public $defaultRoute = 'manage';
 
     /**
-     * @var array imperavi editor options
+     * @var array froala editor options
+     *
+     * @see https://www.froala.com/wysiwyg-editor/docs
      */
-    public $imperaviEditorOptions = [
-        'plugins' => ['video', 'fullscreen', 'table'],
-        'options' => [
-            'minHeight' => 200,
-            'imageUpload' => '/cms/manage/file-upload',
-            'fileUpload' => '/cms/manage/file-upload',
+    public $froalaEditorOptions = [
+        'clientOptions' => [
+            'heightMin' => 300,
+            'theme' => 'gray',
+            'imageUploadURL' => '/cms/manage/image-upload',
+            'imageManagerLoadURL' => '/cms/manage/images',
+        ],
+        'excludedPlugins' => [
+            'file',
+            'emoticons',
         ],
     ];
 
