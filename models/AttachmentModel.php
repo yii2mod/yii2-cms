@@ -4,7 +4,7 @@ namespace yii2mod\cms\models;
 
 use Yii;
 use yii\db\ActiveRecord;
-use yii2tech\ar\file\FileBehavior;
+use yii2tech\ar\file\ImageFileBehavior;
 
 /**
  * This is the model class for table "{{%attachment}}".
@@ -31,7 +31,7 @@ class AttachmentModel extends ActiveRecord
         return [
             [['file_version'], 'integer'],
             [['file_extension'], 'string', 'max' => 255],
-            ['file', 'file', 'skipOnEmpty' => false],
+            ['file', 'file', 'mimeTypes' => ['image/jpeg', 'image/pjpeg', 'image/png', 'image/gif'], 'skipOnEmpty' => !$this->isNewRecord],
         ];
     }
 
@@ -54,10 +54,14 @@ class AttachmentModel extends ActiveRecord
     {
         return [
             'file' => [
-                'class' => FileBehavior::class,
+                'class' => ImageFileBehavior::class,
                 'fileStorageBucket' => 'attachment',
                 'fileExtensionAttribute' => 'file_extension',
                 'fileVersionAttribute' => 'file_version',
+                'fileTransformations' => [
+                    'origin',
+                    'thumbnail' => [250, 250],
+                ],
             ],
         ];
     }

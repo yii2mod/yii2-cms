@@ -5,7 +5,9 @@ namespace yii2mod\cms\controllers;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\UnprocessableEntityHttpException;
 use yii\web\UploadedFile;
+use yii2mod\cms\models\AttachmentModel;
 use yii2mod\cms\models\CmsModel;
 use yii2mod\editable\EditableAction;
 
@@ -56,7 +58,8 @@ class ManageController extends Controller
             'create' => ['get', 'post'],
             'update' => ['get', 'post'],
             'delete' => ['post'],
-            'file-upload' => ['post'],
+            'image-upload' => ['post'],
+            'images' => ['get'],
         ],
     ];
 
@@ -177,21 +180,39 @@ class ManageController extends Controller
     }
 
     /**
+     * Upload an image
+     *
      * @return \yii\web\Response
+     *
+     * @throws UnprocessableEntityHttpException
      */
-    public function actionFileUpload()
+    public function actionImageUpload()
     {
         $model = Yii::createObject($this->attachmentModelClass);
         $model->file = UploadedFile::getInstanceByName('file');
 
-        if ($model->save()) {
-            $result = [
-                'filelink' => $model->getFileUrl(),
-                'filename' => $model->getFileSelfName(),
-            ];
-        } else {
-            $result = [
-                'error' => $model->getFirstError('file'),
+        if (!$model->save()) {
+            throw new UnprocessableEntityHttpException($model->getFirstError('file'));
+        }
+
+        return $this->asJson([
+            'link' => $model->getFileUrl('origin'),
+        ]);
+    }
+
+    /**
+     * Return list of all images
+     *
+     * @return \yii\web\Response
+     */
+    public function actionImages()
+    {
+        $result = [];
+
+        foreach (AttachmentModel::find()->each() as $attachment) {
+            $result[] = [
+                'url' => $attachment->getFileUrl('origin'),
+                'thumb' => $attachment->getFileUrl('thumbnail'),
             ];
         }
 
