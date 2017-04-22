@@ -23,6 +23,7 @@ class Widget extends FroalaEditorWidget
 
         if ($request->enableCsrfValidation) {
             $this->clientOptions['imageUploadParams'][$request->csrfParam] = $request->getCsrfToken();
+            $this->clientOptions['imageManagerDeleteParams'][$request->csrfParam] = $request->getCsrfToken();
         }
     }
 }

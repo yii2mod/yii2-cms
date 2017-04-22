@@ -48,4 +48,6 @@ return [
     'Page has been updated.' => 'Page has been updated.',
     'Page has been deleted.' => 'Page has been deleted.',
     'The requested page does not exist.' => 'The requested page does not exist.',
+    'File Extension' => 'File Extension',
+    'File Version' => 'File Version',
 ];

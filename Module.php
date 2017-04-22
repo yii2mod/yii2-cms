@@ -28,7 +28,9 @@ class Module extends \yii\base\Module
         'clientOptions' => [
             'heightMin' => 300,
             'theme' => 'gray',
-            'imageUploadURL' => '/cms/manage/image-upload',
+            'imageUploadURL' => '/cms/manage/upload-image',
+            'imageManagerDeleteURL' => '/cms/manage/delete-image',
+            'imageManagerDeleteMethod' => 'POST',
             'imageManagerLoadURL' => '/cms/manage/images',
         ],
         'excludedPlugins' => [
