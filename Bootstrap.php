@@ -23,7 +23,7 @@ class Bootstrap implements BootstrapInterface
             ];
         }
 
-        if ($app->getModule('comment') === null) {
+        if (!$app->hasModule('comment')) {
             $app->setModule('comment', ['class' => 'yii2mod\comments\Module']);
         }
 

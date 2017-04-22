@@ -12,7 +12,7 @@ use yii2mod\markdown\MarkdownEditor;
 ?>
 <div class="cms-model-form">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <?php $form = ActiveForm::begin(['id' => 'cms-form']); ?>
 
             <?php echo $form->field($model, 'title')->textInput(['maxlength' => true]); ?>
@@ -22,7 +22,7 @@ use yii2mod\markdown\MarkdownEditor;
                     'editorOptions' => Yii::$app->getModule('cms')->markdownEditorOptions,
                 ]); ?>
             <?php else: ?>
-                <?php echo $form->field($model, 'content')->widget(Widget::class, Yii::$app->getModule('cms')->imperaviEditorOptions); ?>
+                <?php echo $form->field($model, 'content')->widget(Widget::class, Yii::$app->getModule('cms')->froalaEditorOptions); ?>
             <?php endif; ?>
 
             <?php echo $form->field($model, 'url', [
