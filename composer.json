@@ -28,7 +28,8 @@
         "yii2mod/yii2-markdown": "*",
         "froala/yii2-froala-editor": "dev-master",
         "cebe/markdown": "~1.1.1",
-        "yii2tech/ar-file": "*"
+        "yii2tech/ar-file": "*",
+        "yiisoft/yii2-imagine": "^2.1"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "~2.0"
