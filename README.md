@@ -94,7 +94,7 @@ public function actions()
 
 ## Features:
 
-1. By default this extension use the `froala editor` for manage cms pages, you can change editor configuration by the following code:
+1. By default this extension uses the `froala editor` for manage cms pages, you can change editor configuration by the following code:
 
 > List of options: https://www.froala.com/wysiwyg-editor/docs/options
 
@@ -109,7 +109,7 @@ public function actions()
             'clientPlugins' => [
             ],
             'clientOptions' => [
-            ]
+            ],
             'excludedPlugins' => [
             ],
         ],
