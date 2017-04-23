@@ -94,7 +94,30 @@ public function actions()
 
 ## Features:
 
-1. Markdown Editor support:
+1. By default this extension use the `froala editor` for manage cms pages, you can change editor configuration by the following code:
+
+> List of options: https://www.froala.com/wysiwyg-editor/docs/options
+
+> Configuration example: https://github.com/froala/yii2-froala-editor#usage
+
+```php
+'modules' => [
+    'cms' => [
+        'class' => 'yii2mod\cms\Module',
+        'froalaEditorOptions' => [
+            // your custom configuration
+            'clientPlugins' => [
+            ],
+            'clientOptions' => [
+            ]
+            'excludedPlugins' => [
+            ],
+        ],
+    ],
+],
+```
+
+2. Markdown Editor support:
 ```php
 'modules' => [
     'cms' => [
@@ -108,7 +131,7 @@ public function actions()
 ],
 ```
 
-2. You can insert your own widget on the page by the following steps:
+3. You can insert your own widget on the page by the following steps:
 
 - Create the widget, for example:
 
@@ -147,7 +170,7 @@ class MyWidget extends Widget
  [[\app\widgets\MyWidget:show]]
 ```
 
-3. You can use parameters in your page content, for example: {siteName}, {homeUrl}. For parsing this parameters you can use the `baseTemplateParams` property:
+4. You can use parameters in your page content, for example: {siteName}, {homeUrl}. For parsing this parameters you can use the `baseTemplateParams` property:
 
 ```php
 public function actions()
@@ -164,7 +187,7 @@ public function actions()
 }
 ```
 
-4. You can change comments module settings by the following code:
+5. You can change comments module settings by the following code:
 
 ```php
 public function actions()
