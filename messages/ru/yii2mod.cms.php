@@ -48,4 +48,6 @@ return [
     'Page has been updated.' => 'Страница был обновлена.',
     'Page has been deleted.' => 'Страница был удалена.',
     'The requested page does not exist.' => 'Ошибка 404 - страница не найдена!',
+    'File Extension' => 'Расширение Файла',
+    'File Version' => 'Версия Файла',
 ];

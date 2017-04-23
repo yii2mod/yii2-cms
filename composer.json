@@ -15,18 +15,21 @@
         },
         {
             "name": "Igor Chepurnoy",
-            "email": "igorzfort@gmail.com"
+            "email": "chepurnoi.igor@gmail.com"
         }
     ],
     "require": {
         "php": ">=5.6",
         "yiisoft/yii2": "~2.0.11",
+        "yiisoft/yii2-bootstrap": "*",
         "yii2mod/yii2-enum": "*",
         "yii2mod/yii2-editable": "*",
         "yii2mod/yii2-comments": "*",
         "yii2mod/yii2-markdown": "*",
-        "asofter/yii2-imperavi-redactor": "*",
-        "cebe/markdown": "~1.1.1"
+        "froala/yii2-froala-editor": "dev-master",
+        "cebe/markdown": "~1.1.1",
+        "yii2tech/ar-file": "*",
+        "yiisoft/yii2-imagine": "^2.1"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "~2.0"
