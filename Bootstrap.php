@@ -3,7 +3,6 @@
 namespace yii2mod\cms;
 
 use yii\base\BootstrapInterface;
-use yii\console\Application as ConsoleApplication;
 
 /**
  * Class Bootstrap
@@ -15,7 +14,7 @@ class Bootstrap implements BootstrapInterface
     /**
      * @inheritdoc
      */
-    public function bootstrap($app)
+    public function bootstrap($app): void
     {
         if (!isset($app->get('i18n')->translations['yii2mod.cms'])) {
             $app->get('i18n')->translations['yii2mod.cms'] = [
@@ -24,7 +23,7 @@ class Bootstrap implements BootstrapInterface
             ];
         }
 
-        if (!$app->hasModule('comment') && !($app instanceof ConsoleApplication)) {
+        if (!$app->hasModule('comment')) {
             $app->setModule('comment', ['class' => 'yii2mod\comments\Module']);
         }
 

@@ -15,7 +15,7 @@ class Widget extends FroalaEditorWidget
     /**
      * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 

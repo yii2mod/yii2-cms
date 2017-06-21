@@ -6,6 +6,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 use yii\web\UnprocessableEntityHttpException;
 use yii\web\UploadedFile;
 use yii2mod\cms\models\AttachmentModel;
@@ -81,7 +82,7 @@ class ManageController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             'verbs' => $this->verbFilterConfig,
@@ -92,7 +93,7 @@ class ManageController extends Controller
     /**
      * @inheritdoc
      */
-    public function actions()
+    public function actions(): array
     {
         return [
             'edit-page' => [
@@ -149,7 +150,7 @@ class ManageController extends Controller
      *
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate(int $id)
     {
         $model = $this->findModel($this->modelClass, $id);
 
@@ -173,7 +174,7 @@ class ManageController extends Controller
      *
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDelete(int $id)
     {
         $this->findModel($this->modelClass, $id)->delete();
         Yii::$app->session->setFlash('success', Yii::t('yii2mod.cms', 'Page has been deleted.'));
@@ -184,11 +185,11 @@ class ManageController extends Controller
     /**
      * Upload an image
      *
-     * @return \yii\web\Response
+     * @return Response
      *
      * @throws UnprocessableEntityHttpException
      */
-    public function actionUploadImage()
+    public function actionUploadImage(): Response
     {
         $model = Yii::createObject($this->attachmentModelClass);
         $model->file = UploadedFile::getInstanceByName('file');
@@ -205,11 +206,11 @@ class ManageController extends Controller
     /**
      * Delete the image
      *
-     * @return \yii\web\Response
+     * @return Response
      *
      * @throws UnprocessableEntityHttpException
      */
-    public function actionDeleteImage()
+    public function actionDeleteImage(): Response
     {
         $model = $this->findModel($this->attachmentModelClass, Yii::$app->request->post('id'));
 
@@ -223,9 +224,9 @@ class ManageController extends Controller
     /**
      * Return list of all images
      *
-     * @return \yii\web\Response
+     * @return Response
      */
-    public function actionImages()
+    public function actionImages(): Response
     {
         $result = [];
 

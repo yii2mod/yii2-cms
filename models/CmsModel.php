@@ -30,7 +30,7 @@ class CmsModel extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public static function tableName()
+    public static function tableName(): string
     {
         return '{{%cms}}';
     }
@@ -38,7 +38,7 @@ class CmsModel extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['title', 'content', 'markdown_content', 'url', 'meta_title', 'meta_description', 'meta_keywords'], 'trim'],
@@ -60,7 +60,7 @@ class CmsModel extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
             'id' => Yii::t('yii2mod.cms', 'ID'),
@@ -81,7 +81,7 @@ class CmsModel extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             TimestampBehavior::class,
@@ -91,7 +91,7 @@ class CmsModel extends ActiveRecord
     /**
      * @return CmsQuery
      */
-    public static function find()
+    public static function find(): CmsQuery
     {
         return new CmsQuery(get_called_class());
     }
@@ -99,7 +99,7 @@ class CmsModel extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function beforeValidate()
+    public function beforeValidate(): bool
     {
         if (parent::beforeDelete()) {
             if (Yii::$app->getModule('cms')->enableMarkdown) {
@@ -117,9 +117,9 @@ class CmsModel extends ActiveRecord
      *
      * @param $url
      *
-     * @return array|null|ActiveRecord
+     * @return null|ActiveRecord
      */
-    public function findPage($url)
+    public function findPage(string $url): ?ActiveRecord
     {
         return self::find()->byUrl($url)->enabled()->one();
     }
@@ -131,7 +131,7 @@ class CmsModel extends ActiveRecord
      *
      * @return string
      */
-    public function getContent()
+    public function getContent(): string
     {
         $content = preg_replace_callback('/\[\[([^(\[\[)]+:[^(\[\[)]+)\]\]/is', [$this, 'replace'], $this->content);
 
@@ -145,7 +145,7 @@ class CmsModel extends ActiveRecord
      *
      * @return string
      */
-    private function replace($data)
+    private function replace(array $data): string
     {
         $widget = explode(':', $data[1]);
         if (class_exists($class = $widget[0]) && method_exists($class, $method = $widget[1])) {

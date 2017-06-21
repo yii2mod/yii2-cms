@@ -41,9 +41,9 @@ class PageAction extends Action
     public $commentWidgetParams = [];
 
     /**
-     * Initializes the object.
+     * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -81,7 +81,7 @@ class PageAction extends Action
      *
      * @return string
      */
-    protected function parseBaseTemplateParams($pageContent)
+    protected function parseBaseTemplateParams(string $pageContent)
     {
         $params = $this->getBaseTemplateParams();
         $p = [];
@@ -110,11 +110,11 @@ class PageAction extends Action
     /**
      * Find CmsModel
      *
-     * @return null|CmsModel
+     * @return CmsModel
      *
      * @throws NotFoundHttpException
      */
-    protected function findModel()
+    protected function findModel(): CmsModel
     {
         if (($model = CmsModel::findOne($this->pageId)) !== null) {
             return $model;

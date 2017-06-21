@@ -14,13 +14,13 @@
             "email": "disemx@gmail.com"
         },
         {
-            "name": "Igor Chepurnoy",
+            "name": "Igor Chepurnoi",
             "email": "chepurnoi.igor@gmail.com"
         }
     ],
     "require": {
-        "php": ">=5.6",
-        "yiisoft/yii2": "~2.0.11",
+        "php": ">=7.1",
+        "yiisoft/yii2": "~2.0.12",
         "yiisoft/yii2-bootstrap": "*",
         "yii2mod/yii2-enum": "*",
         "yii2mod/yii2-editable": "*",

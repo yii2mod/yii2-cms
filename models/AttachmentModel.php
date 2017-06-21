@@ -18,7 +18,7 @@ class AttachmentModel extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public static function tableName()
+    public static function tableName(): string
     {
         return '{{%attachment}}';
     }
@@ -26,7 +26,7 @@ class AttachmentModel extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['file_version'], 'integer'],
@@ -38,7 +38,7 @@ class AttachmentModel extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
             'id' => Yii::t('yii2mod.cms', 'ID'),
@@ -50,7 +50,7 @@ class AttachmentModel extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             'file' => [

@@ -20,7 +20,7 @@ class CmsSearch extends CmsModel
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['id', 'status', 'comment_available'], 'integer'],
@@ -35,7 +35,7 @@ class CmsSearch extends CmsModel
      *
      * @return ActiveDataProvider
      */
-    public function search(array $params)
+    public function search(array $params): ActiveDataProvider
     {
         $query = CmsModel::find();
 
