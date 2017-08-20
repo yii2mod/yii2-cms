@@ -41,5 +41,11 @@
     },
     "extra": {
         "bootstrap": "yii2mod\\cms\\Bootstrap"
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }

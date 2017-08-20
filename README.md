@@ -1,6 +1,12 @@
-CMS Extension
-========================
-This module provides a web interface for content management system and includes following features:
+<p align="center">
+    <a href="https://github.com/yiisoft" target="_blank">
+        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
+    </a>
+    <h1 align="center">Yii2 CMS Extension</h1>
+    <br>
+</p>
+
+This module provides a web interface for content management system and includes the following features:
 
 - Allows CRUD operations for pages
 - [Support Markdown Editor](https://github.com/yii2mod/yii2-markdown)
