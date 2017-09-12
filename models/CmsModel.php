@@ -119,7 +119,7 @@ class CmsModel extends ActiveRecord
      *
      * @return null|ActiveRecord
      */
-    public function findPage(string $url): ?ActiveRecord
+    public function findPage(string $url)
     {
         return self::find()->byUrl($url)->enabled()->one();
     }

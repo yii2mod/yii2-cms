@@ -15,7 +15,7 @@ class Bootstrap implements BootstrapInterface
     /**
      * @inheritdoc
      */
-    public function bootstrap($app): void
+    public function bootstrap($app)
     {
         if (!isset($app->get('i18n')->translations['yii2mod.cms'])) {
             $app->get('i18n')->translations['yii2mod.cms'] = [

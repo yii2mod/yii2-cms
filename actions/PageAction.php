@@ -43,7 +43,7 @@ class PageAction extends Action
     /**
      * @inheritdoc
      */
-    public function init(): void
+    public function init()
     {
         parent::init();
 

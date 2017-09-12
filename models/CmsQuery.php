@@ -21,11 +21,11 @@ class CmsQuery extends ActiveQuery
     }
 
     /**
-     * @param $url
+     * @param string $url
      *
      * @return $this
      */
-    public function byUrl($url)
+    public function byUrl(string $url)
     {
         return $this->andWhere(['url' => $url]);
     }
