@@ -26,7 +26,7 @@
         "yii2mod/yii2-editable": "*",
         "yii2mod/yii2-comments": "*",
         "yii2mod/yii2-markdown": "*",
-        "froala/yii2-froala-editor": "dev-master",
+        "froala/yii2-froala-editor": "*",
         "cebe/markdown": "~1.1.1",
         "yii2tech/ar-file": "*",
         "yiisoft/yii2-imagine": "^2.1"
